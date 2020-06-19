@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="commons_utils" />
         <module name="service_user" />
+        <module name="service_views" />
         <module name="service_base" />
       </profile>
     </annotationProcessing>
@@ -18,6 +19,7 @@
       <module name="service" target="1.8" />
       <module name="service_base" target="1.8" />
       <module name="service_user" target="1.8" />
+      <module name="service_views" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -26,6 +28,7 @@
       <module name="commons_utils" options="-parameters" />
       <module name="service_base" options="-parameters" />
       <module name="service_user" options="-parameters" />
+      <module name="service_views" options="-parameters" />
     </option>
   </component>
 </project>
