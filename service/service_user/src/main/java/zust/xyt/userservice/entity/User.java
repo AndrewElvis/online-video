@@ -8,6 +8,7 @@ import java.io.Serializable;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import io.swagger.models.auth.In;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -76,4 +77,7 @@ public class User implements Serializable {
 
     @ApiModelProperty(value = "关注数量")
     private int subscribeNum;
+
+    @ApiModelProperty(value = "是否为管理员 1(管理员)  0（普通用户)")
+    private Integer isAdmin;
 }

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
 </head>
 <body>
 <nav class="main_sidebar" th:fragment="sidebar">
@@ -21,14 +22,19 @@
             <div class="sections">
                 <h3> Browse </h3>
                 <ul>
-                    <li class="active"><a href="home.html"> <i class="uil-home-alt"></i> <span> 主页 </span> </a></li>
-                    <li><a href="browse-channals.html">
+                    <li class="active" th:class="${activeUri=='home'?'active':''}"><a href="home.html">
+                        <i class="uil-home-alt"></i><span> 主页
+                    </span> </a></li>
+                    <li th:class="${activeUri=='subscribe'?'active':''}"><a href="browse-channals.html">
                         <i class="uil-users-alt"></i> <span> 我的订阅 </span> </a></li>
-                    <li><a href="your-watch-later.html"> <i class="uil-clock"></i> <span> 稍后再看 </span> </a></li>
-                    <li><a href="your-laked-videos.html"> <i class="uil-thumbs-up"></i> <span> 我的喜欢 </span>
+                    <li th:class="${activeUri=='watchlater'?'active':''}"><a href="your-watch-later.html"> <i
+                            class="uil-clock"></i> <span> 稍后再看 </span> </a></li>
+                    <li th:class="${activeUri=='like'?'active':''}"><a href="your-laked-videos.html"> <i
+                            class="uil-thumbs-up"></i> <span> 我的喜欢 </span>
                     </a></li>
-                    <li><a href="browse-catagroies.html"> <i class="uil-layers"></i> <span> 菜单分类</span> </a></li>
-                    <li><a href="your-history.html"> <i class="uil-history"></i> <span> 历史观看 </span> </a></li>
+                    <li th:class="${activeUri=='catagroies'?'active':''}"><a href="browse-catagroies.html"> <i class="uil-layers"></i> <span> 菜单分类</span> </a></li>
+                    <li th:class="${activeUri=='history'?'active':''}"><a href="your-history.html"> <i
+                            class="uil-history"></i> <span> 历史观看 </span> </a></li>
                 </ul>
             </div>
 
@@ -161,34 +167,57 @@
 
         <!-- user icons -->
         <div class="head_user">
+            <el-dropdown trigger="click">
+                <el-button type="primary">
+                    发布<i class="el-icon-arrow-down el-icon--right"></i>
+                </el-button>
+                <el-dropdown-menu slot="dropdown">
 
-            <a href="#" class="btn-upload uk-visible@s"> <i class="uil-cloud-upload"></i> 发布</a>
+                        <el-form>
+                            <el-form-item label="视频标题">
+                                <el-input ></el-input>
+                            </el-form-item>
+                            <el-form-item label="视频简介">
+                                <el-input type="textarea"></el-input>
+                            </el-form-item>
+                            <el-form-item>
+                                <el-select
+                                        v-model="value"
+                                        multiple
+                                        filterable
+                                        allow-create
+                                        default-first-option
+                                        placeholder="请选择视频标签">
+                                    <el-option
+                                            v-for="item in options"
+                                            :key="item.value"
+                                            :label="item.label"
+                                            :value="item.value">
+                                    </el-option>
+                                </el-select>
+                            </el-form-item>
+                            <el-form-item>
+                                <el-upload
+                                        class="upload-demo"
+                                        action="https://jsonplaceholder.typicode.com/posts/"
+                                        :on-preview="handlePreview"
+                                        :on-remove="handleRemove"
+                                        :before-remove="beforeRemove"
+                                        multiple
+                                        :limit="1"
+                                        :on-exceed="handleExceed"
+                                        :file-list="fileList">
+                                    <el-button size="small" type="primary">点击上传</el-button>
+                                </el-upload>
+                            </el-form-item>
+                            <el-form-item>
+                                <el-button type="primary" @click="submitForm('numberValidateForm')">提交</el-button>
+                                <el-button @click="resetForm('numberValidateForm')">重置</el-button>
+                            </el-form-item>
+                        </el-form>
 
-            <!-- upload dropdown box -->
-            <div uk-dropdown="pos: top-right;mode:click ; animation: uk-animation-slide-bottom-small"
-                 class="dropdown-notifications">
-
-                <!-- notivication header -->
-                <div class="dropdown-notifications-headline">
-                    <h4>发布Vlog</h4>
-                </div>
-
-                <!-- notification contents -->
-                <div class="dropdown-notifications-content uk-flex uk-flex-middle uk-flex-center text-center">
-
-
-                    <div class="uk-flex uk-flex-column choose-upload  text-center">
-                        <img src="assets/images/upload.png" width="70" class="m-auto" alt="">
-                        <p class="my-3"> 发布Vlog <br> 分享你的生活 ..
-                        </p>
-                        <div uk-form-custom>
-                            <input type="file">
-                            <a href="#" class="button soft-primary small"> 选择文件</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+                </el-dropdown-menu>
+            </el-dropdown>
 
             <!-- videos feed  -->
             <a href="#video" class="opts_icon" uk-toggle> <i class="uil-youtube-alt"></i> <span>9+</span> </a>
@@ -501,7 +530,7 @@
                             <img src="assets/images/avatars/avatar-1.jpg" alt="">
                         </div>
                         <div class="dropdown-user-name">
-                            <!--Richard Ali-->{{teacher.name}} <span> verified <i class="uil-check"></i>
+                            <!--Richard Ali--> <span> verified <i class="uil-check"></i>
                                 </span>
                         </div>
                     </div>
@@ -531,3 +560,4 @@
 
 </nav>
 </body>
+

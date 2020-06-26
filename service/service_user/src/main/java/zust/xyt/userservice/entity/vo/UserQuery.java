@@ -14,7 +14,7 @@ public class UserQuery {
     private String name;
 
     @ApiModelProperty(value = "用户性别")
-    private int sex;
+    private Integer sex;
 
     @ApiModelProperty(value = "用户昵称")
     private String nickname;
