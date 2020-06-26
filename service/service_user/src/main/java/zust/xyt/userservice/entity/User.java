@@ -8,6 +8,7 @@ import java.io.Serializable;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import io.swagger.models.auth.In;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -70,6 +71,9 @@ public class User implements Serializable {
 
     @ApiModelProperty(value = "是否禁用 1（true）已禁用，  0（false）未禁用")
     private Boolean isDisabled;
+
+    @ApiModelProperty(value = "是否为管理员 1(管理员)  0（普通用户)")
+    private Integer isAdmin;
 
 
 }

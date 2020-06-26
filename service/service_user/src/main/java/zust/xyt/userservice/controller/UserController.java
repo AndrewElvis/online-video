@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import io.swagger.models.auth.In;
 import org.apache.poi.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
@@ -30,6 +31,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/user")
+@CrossOrigin
 public class UserController {
 
     @Autowired
@@ -62,7 +64,7 @@ public class UserController {
     /**
      * 分页
      *
-     * @param page
+     * @param current
      * @param limit
      * @return
      */
@@ -102,14 +104,14 @@ public class UserController {
         //构建条件
         QueryWrapper<User> wrapper = new QueryWrapper<>();
         String name = userQuery.getName();
-        int sex = userQuery.getSex();
+        Integer sex = userQuery.getSex();
         String nickname = userQuery.getNickname();
         String begin = userQuery.getBegin();
         String end = userQuery.getEnd();
         if (!StringUtils.isEmpty(name)) {
             wrapper.like("name", name);
         }
-        if (sex != 0) {
+        if (!StringUtils.isEmpty(sex)) {
             wrapper.eq("sex", sex);
         }
         if (!StringUtils.isEmpty(nickname)) {
@@ -160,6 +162,23 @@ public class UserController {
             @RequestBody User user){
         user.setId(id);
         userService.updateById(user);
+        return ResponseResult.ok();
+    }
+
+    @PostMapping("/login")
+    public ResponseResult login() {
+
+        return ResponseResult.ok().data("token", "admin");
+    }
+
+    @GetMapping("/info")
+    public ResponseResult info() {
+        return ResponseResult.ok().data("roles", "[admin]").data("name", "admin")
+                .data("avatar", "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif");
+    }
+
+    @GetMapping("/logout")
+    public ResponseResult logout() {
         return ResponseResult.ok();
     }
 }

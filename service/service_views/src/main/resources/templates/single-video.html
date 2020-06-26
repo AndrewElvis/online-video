@@ -11,6 +11,21 @@
     <meta name="description" content="TubeLite is - Professional A unique and beautiful collection of UI elements">
     <link rel="icon" href="assets/images/favicon.png">
 
+    <script src="assets/js/vue.min.js"></script>
+    <!-- javaScripts
+                ================================================== -->
+    <script src="assets/js/framework.js"></script>
+    <script src="assets/js/jquery-3.3.1.min.js"></script>
+    <script src="assets/js/simplebar.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <script src="assets/js/axios.min.js"></script>
+    <script src="assets/js/test.js"></script>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+
     <!-- CSS 
     ================================================== -->
     <link rel="stylesheet" href="assets/css/style.css">
@@ -30,6 +45,7 @@
 
 <body>
 
+<div id="app">
     <!-- Wrapper -->
     <div id="wrapper" class="sidebar-out">
 
@@ -53,7 +69,7 @@
                                 uk-toggle="target: #video-box ; cls: video-resized-hedden uk-animation-slide-left"></span>
 
                             <div class="embed-video">
-                                <iframe src="https://www.youtube.com/embed/pQN-pnXPaVg" frameborder="0"
+                                <iframe src="https://outin-728f05bbae0011ea98ee00163e1c9256.oss-cn-shanghai.aliyuncs.com/sv/1181941a-172ef1b6b97/1181941a-172ef1b6b97.mp4?Expires=1593158092&OSSAccessKeyId=LTAIVVfYx6D0HeL2&Signature=x4aa0PSuc8%2BEs4dYq8k6MsFHH3A%3D" frameborder="0"
                                     uk-video="automute: true" allowfullscreen uk-responsive></iframe>
                             </div>
                         </div>
@@ -565,52 +581,74 @@
         </div>
 
     </div>
+</div>
 
-    <!-- For Night mode -->
-    <script>
-        (function (window, document, undefined) {
-            'use strict';
-            if (!('localStorage' in window)) return;
-            var nightMode = localStorage.getItem('gmtNightMode');
-            if (nightMode) {
-                document.documentElement.className += ' night-mode';
+<script>
+    new Vue({
+        el: '#app',
+        data: function() {
+            return {
+                options: [{
+                    value: 'sights',
+                    label: '风景'
+                }, {
+                    value: 'entertainment',
+                    label: '娱乐'
+                }, {
+                    value: 'food',
+                    label: '美食'
+                }],
+                value: [],
+                fileList: []
             }
-        })(window, document);
-
-
-        (function (window, document, undefined) {
-
-            'use strict';
-
-            // Feature test
-            if (!('localStorage' in window)) return;
-
-            // Get our newly insert toggle
-            var nightMode = document.querySelector('#night-mode');
-            if (!nightMode) return;
-
-            // When clicked, toggle night mode on or off
-            nightMode.addEventListener('click', function (event) {
-                event.preventDefault();
-                document.documentElement.classList.toggle('night-mode');
-                if (document.documentElement.classList.contains('night-mode')) {
-                    localStorage.setItem('gmtNightMode', true);
-                    return;
-                }
-                localStorage.removeItem('gmtNightMode');
-            }, false);
-
-        })(window, document);
-    </script>
-
-
-    <!-- javaScripts
-                ================================================== -->
-    <script src="assets/js/framework.js"></script>
-    <script src="assets/js/jquery-3.3.1.min.js"></script>
-    <script src="assets/js/simplebar.js"></script>
-    <script src="assets/js/main.js"></script>
-
+        },
+        methods: {
+            handleRemove(file, fileList) {
+                console.log(file, fileList);
+            },
+            handlePreview(file) {
+                console.log(file);
+            },
+            handleExceed(files, fileList) {
+                this.$message.warning(`当前限制选择 1 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
+            },
+            beforeRemove(file, fileList) {
+                return this.$confirm(`确定移除 ${ file.name }？`);
+            },
+            submitForm(formName) {
+                this.$refs[formName].validate((valid) => {
+                    if (valid) {
+                        alert('submit!');
+                    } else {
+                        console.log('error submit!!');
+                        return false;
+                    }
+                });
+            },
+            resetForm(formName) {
+                this.$refs[formName].resetFields();
+            }
+        }
+    })
+</script>
+<style>
+    .el-dropdown-menu {
+        width: 450px;
+    }
+    .el-dropdown {
+        vertical-align: top;
+    }
+    .el-dropdown + .el-dropdown {
+        margin-left: 15px;
+    }
+    .el-icon-arrow-down {
+        font-size: 12px;
+    }
+    .el-form {
+        width: 400px;
+        margin-left: 20px;
+    }
+</style>
 </body>
 
 </html>
