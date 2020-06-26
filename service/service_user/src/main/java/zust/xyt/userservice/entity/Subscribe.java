@@ -5,12 +5,12 @@ import com.baomidou.mybatisplus.annotation.*;
 import java.util.Date;
 
 import java.io.Serializable;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import zust.xyt.exceptionhandler.VlogException;
 
 /**
  * <p>
@@ -18,45 +18,27 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author EricWang
- * @since 2020-06-17
+ * @since 2020-06-20
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel(value="User对象", description="")
-public class User implements Serializable {
+@ApiModel(value="Subscribe对象", description="")
+public class Subscribe implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "用户ID")
+    @ApiModelProperty(value = "关注id")
     @TableId(value = "id", type = IdType.ID_WORKER_STR)
     private String id;
 
-    @ApiModelProperty(value = "微信openid")
-    private String openid;
+    @ApiModelProperty(value = "订阅者id")
+    private String subscriberId;
 
-    @ApiModelProperty(value = "用户名")
-    private String name;
+    @ApiModelProperty(value = "被订阅者id")
+    private String subscribeId;
 
-    @ApiModelProperty(value = "密码")
-    private String password;
-
-    @ApiModelProperty(value = "用户头像")
-    private String avatar;
-
-    @ApiModelProperty(value = "昵称")
-    private String nickname;
-
-    @ApiModelProperty(value = "性别 0 未知 ,1 女，2 男 ，")
-    private Integer sex;
-
-    @ApiModelProperty(value = "手机号")
-    private String phone;
-
-    @ApiModelProperty(value = "生日")
-    private Date birthday;
-
-    @ApiModelProperty(value = "创建时间")
+    @ApiModelProperty(value = "关注时间")
     @TableField(fill = FieldFill.INSERT)
     private Date gmtCreate;
 
@@ -71,9 +53,5 @@ public class User implements Serializable {
     @ApiModelProperty(value = "是否禁用 1（true）已禁用，  0（false）未禁用")
     private Boolean isDisabled;
 
-    @ApiModelProperty(value = "粉丝数量")
-    private int fansNum;
 
-    @ApiModelProperty(value = "关注数量")
-    private int subscribeNum;
 }

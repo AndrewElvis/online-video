@@ -24,4 +24,10 @@ public class UserQuery {
 
     @ApiModelProperty(value = "查询结束时间", example = "2019-12-01 10:10:10")
     private String end;
+
+    @ApiModelProperty(value = "最少粉丝数量")
+    private int fansMinNum;
+
+    @ApiModelProperty(value = "最少关注数量")
+    private int subscribeMinNum;
 }

@@ -62,7 +62,7 @@ public class UserController {
     /**
      * 分页
      *
-     * @param page
+     * @param current
      * @param limit
      * @return
      */
@@ -106,10 +106,12 @@ public class UserController {
         String nickname = userQuery.getNickname();
         String begin = userQuery.getBegin();
         String end = userQuery.getEnd();
+        int fansMinNum = userQuery.getFansMinNum();
+        int subscribeMinNum = userQuery.getSubscribeMinNum();
         if (!StringUtils.isEmpty(name)) {
             wrapper.like("name", name);
         }
-        if (sex != 0) {
+        if (!StringUtils.isEmpty(sex)) {
             wrapper.eq("sex", sex);
         }
         if (!StringUtils.isEmpty(nickname)) {
@@ -120,6 +122,12 @@ public class UserController {
         }
         if (!StringUtils.isEmpty(end)) {
             wrapper.le("gmt_modified", end);
+        }
+        if (!StringUtils.isEmpty(fansMinNum)){
+            wrapper.ge("fans_num",fansMinNum);
+        }
+        if (!StringUtils.isEmpty(subscribeMinNum)){
+            wrapper.ge("subscribe_num",subscribeMinNum);
         }
 
         userService.page(page, wrapper);
