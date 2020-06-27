@@ -12,7 +12,6 @@
         <module name="service_views" />
         <module name="service_user" />
         <module name="service_base" />
-        <module name="service_video" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

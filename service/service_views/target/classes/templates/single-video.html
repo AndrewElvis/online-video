@@ -70,10 +70,11 @@
                             <span class="icon-feather-x btn-box-close"
                                 uk-toggle="target: #video-box ; cls: video-resized-hedden uk-animation-slide-left"></span>
 
-                            <div class="embed-video">
+                            <div th:class="embed-video">
                                 <iframe th:src="${url}" frameborder="0"
                                     uk-video="automute: true" allowfullscreen uk-responsive></iframe>
                             </div>
+                            <div th:each=""></div>
                         </div>
 
                         <div class="video-info mt-3">
