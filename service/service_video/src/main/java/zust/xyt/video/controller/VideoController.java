@@ -43,9 +43,17 @@ public class VideoController {
         return ResponseResult.ok();
     }
 
-    //根据ID查看视频字段信息
     @GetMapping
-    public ResponseResult getVideo(String id) {
+    public List<Video> getAllVideo() {
+        QueryWrapper<Video> wrapper = new QueryWrapper<>();
+        wrapper.orderByDesc("gmt_create");
+        List<Video> videoList = videoService.list(wrapper);
+        return videoList;
+    }
+
+    //根据ID查看视频字段信息
+    @GetMapping("{id}")
+    public ResponseResult getVideo(@PathVariable String id) {
         Video video = videoService.getById(id);
         return ResponseResult.ok().data("video", video);
     }

@@ -9,18 +9,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="TubeLite is - Professional A unique and beautiful collection of UI elements">
-    <link rel="icon" href="assets/images/favicon.png">
+    <link rel="icon" th:href="@{/assets/images/favicon.png}">
 
-    <script src="assets/js/vue.min.js"></script>
+    <script th:src="@{/assets/js/vue.min.js}"></script>
     <!-- javaScripts
                 ================================================== -->
-    <script src="assets/js/framework.js"></script>
-    <script src="assets/js/jquery-3.3.1.min.js"></script>
-    <script src="assets/js/simplebar.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script th:src="@{/assets/js/framework.js}"></script>
+    <script th:src="@{/assets/js/jquery-3.3.1.min.js}"></script>
+    <script th:src="@{/assets/js/simplebar.js}"></script>
+    <script th:src="@{/assets/js/main.js}"></script>
 
-    <script src="assets/js/axios.min.js"></script>
-    <script src="assets/js/test.js"></script>
+    <script th:src="@{/assets/js/axios.min.js}"></script>
+    <script th:src="@{/assets/js/test.js}"></script>
     <!-- 引入样式 -->
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     <!-- 引入组件库 -->
@@ -30,13 +30,13 @@
 
     <!-- CSS 
     ================================================== -->
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/night-mode.css">
-    <link rel="stylesheet" href="assets/css/framework.css">
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/night-mode.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/framework.css}">
 
     <!-- icons
     ================================================== -->
-    <link rel="stylesheet" href="assets/css/icons.css">
+    <link rel="stylesheet" th:href="@{/assets/css/icons.css}">
 
     <!-- Google font
     ================================================== -->
@@ -74,7 +74,6 @@
                                 <iframe th:src="${url}" frameborder="0"
                                     uk-video="automute: true" allowfullscreen uk-responsive></iframe>
                             </div>
-                            <div th:each=""></div>
                         </div>
 
                         <div class="video-info mt-3">
@@ -112,7 +111,7 @@
                                 <div class="user-details-card uk-width-expand">
                                     <a href="single-channal.html" class="uk-flex">
                                         <div class="user-details-card-avatar">
-                                            <img src="assets/images/avatars/avatar-2.jpg" alt="">
+                                            <img th:src="@{/assets/images/avatars/avatar-2.jpg}" alt="">
                                         </div>
                                         <div class="user-details-card-name">
                                             Stella Johnson <span> Published on Oct 22, 2017 </span>
@@ -149,7 +148,7 @@
 
                             <ul>
                                 <li>
-                                    <div class="avatar"><img src="assets/images//avatars/avatar-1.jpg" alt="">
+                                    <div class="avatar"><img th:src="@{/assets/images/avatars/avatar-1.jpg}" alt="">
                                     </div>
                                     <div class="comment-content">
                                         <div class="comment-by">Jonathan Madano <span>Student</span>
@@ -172,7 +171,8 @@
 
                                     <ul>
                                         <li>
-                                            <div class="avatar"><img src="assets/images/avatars/avatar-2.jpg" alt="">
+                                            <div class="avatar"><img th:src="@{/assets/images/avatars/avatar-2.jpg}"
+                                                                     alt="">
                                             </div>
                                             <div class="comment-content">
                                                 <div class="comment-by">Stella Johnson<span>Student</span>
@@ -189,7 +189,7 @@
                                         </li>
                                         <li>
                                             <div class="avatar">
-                                                <img src="assets/images/avatars/avatar-3.jpg" alt=""></div>
+                                                <img th:src="@{/assets/images/avatars/avatar-3.jpg}" alt=""></div>
                                             <div class="comment-content">
 
                                                 <div class="comment-by">Adrian Mohani <span>Student</span>
@@ -207,7 +207,7 @@
                                 </li>
 
                                 <li>
-                                    <div class="avatar"><img src="assets/images/avatars/avatar-4.jpg" alt="">
+                                    <div class="avatar"><img th:src="@{/assets/images/avatars/avatar-4.jpg}" alt="">
                                     </div>
                                     <div class="comment-content">
 
@@ -234,7 +234,7 @@
                             <h4>Your Comment </h4>
                             <ul>
                                 <li>
-                                    <div class="avatar"><img src="assets/images/avatars/avatar-2.jpg" alt="">
+                                    <div class="avatar"><img th:src="@{/assets/images/avatars/avatar-2.jpg}" alt="">
                                     </div>
                                     <div class="comment-content">
                                         <form class="uk-grid-small" uk-grid>
@@ -288,14 +288,14 @@
                                         <span class="video-post-time">23:00</span>
                                         <span class="play-btn-trigger"></span>
 
-                                        <img src="assets/images/video-thumbal/2.png" alt="">
+                                        <img th:src="@{/assets/images/video-thumbal/2.png}" alt="">
 
                                     </div>
 
                                     <!-- Blog Post Content -->
                                     <div class="video-post-content">
                                         <h3> How to create a basic Sticky HTML element .. </h3>
-                                        <img src="assets/images/avatars/avatar-3.jpg" alt="">
+                                        <img th:src="@{/assets/images/avatars/avatar-3.jpg}" alt="">
                                         <span class="video-post-user">Jonathan Madano</span>
                                         <span class="video-post-views">531k views</span>
                                         <span class="video-post-date"> 2 weeks ago </span>
@@ -323,12 +323,12 @@
                                         <span class="video-post-count">2.7k</span>
                                         <span class="video-post-time">40:00</span>
                                         <span class="play-btn-trigger"></span>
-                                        <img src="assets/images/video-thumbal/1.png" alt="">
+                                        <img th:src="@{/assets/images/video-thumbal/1.png}" alt="">
                                     </div>
                                     <!-- Blog Post Content -->
                                     <div class="video-post-content">
                                         <h3> Learn how to create a PHP singleton class </h3>
-                                        <img src="assets/images/avatars/avatar-2.jpg" alt="">
+                                        <img th:src="@{/assets/images/avatars/avatar-2.jpg}" alt="">
                                         <span class="video-post-user">Stella Johnson</span>
                                         <span class="video-post-views">938k views</span>
                                         <span class="video-post-date"> 3 weeks ago </span>
@@ -356,12 +356,12 @@
                                         <span class="video-post-count">2.3M</span>
                                         <span class="video-post-time">14:00</span>
                                         <span class="play-btn-trigger"></span>
-                                        <img src="assets/images/video-thumbal/3.png" alt="">
+                                        <img th:src="@{/assets/images/video-thumbal/3.png}" alt="">
                                     </div>
                                     <!-- Blog Post Content -->
                                     <div class="video-post-content">
                                         <h3> Learn how to Create Laravel Package and .. </h3>
-                                        <img src="assets/images/avatars/avatar-5.jpg" alt="">
+                                        <img th:src="@{/assets/images/avatars/avatar-5.jpg}" alt="">
                                         <span class="video-post-user">Alex Dolgove</span>
                                         <span class="video-post-views">531k views</span>
                                         <span class="video-post-date"> 2 weeks ago </span>
@@ -389,12 +389,12 @@
                                         <span class="video-post-count">1.4M</span>
                                         <span class="video-post-time">23:00</span>
                                         <span class="play-btn-trigger"></span>
-                                        <img src="assets/images/video-thumbal/4.png" alt="">
+                                        <img th:src="@{/assets/images/video-thumbal/4.png}" alt="">
                                     </div>
                                     <!-- Blog Post Content -->
                                     <div class="video-post-content">
                                         <h3> Learn how to upload files using Laravel and .. </h3>
-                                        <img src="assets/images/avatars/avatar-4.jpg" alt="">
+                                        <img th:src="@{/assets/images/avatars/avatar-4.jpg}" alt="">
                                         <span class="video-post-user">Adrian Mohani</span>
                                         <span class="video-post-views">531k views</span>
                                         <span class="video-post-date"> 2 weeks ago </span>
@@ -423,13 +423,13 @@
                                         <span class="video-post-count">1.4M</span>
                                         <span class="video-post-time">23:00</span>
                                         <span class="play-btn-trigger"></span>
-                                        <img src="assets/images/video-thumbal/img-1.png" alt="">
+                                        <img th:src="@{/assets/images/video-thumbal/img-1.png}" alt="">
                                     </div>
 
                                     <!-- Blog Post Content -->
                                     <div class="video-post-content">
                                         <h3> Learn How-To Design & Prototype in Adobe XD Tutorial </h3>
-                                        <img src="assets/images/avatars/avatar-3.jpg" alt="">
+                                        <img th:src="@{/assets/images/avatars/avatar-3.jpg}" alt="">
                                         <span class="video-post-user">Jonathan Madano</span>
                                         <span class="video-post-views">531k views</span>
                                         <span class="video-post-date"> 2 weeks ago </span>
@@ -457,12 +457,12 @@
                                         <span class="video-post-count">2.7k</span>
                                         <span class="video-post-time">40:00</span>
                                         <span class="play-btn-trigger"></span>
-                                        <img src="assets/images/video-thumbal/img-3.png" alt="">
+                                        <img th:src="@{/assets/images/video-thumbal/img-3.png}" alt="">
                                     </div>
                                     <!-- Blog Post Content -->
                                     <div class="video-post-content">
                                         <h3> Learn How to Prototype Faster with Mockplus! in 2020 </h3>
-                                        <img src="assets/images/avatars/avatar-2.jpg" alt="">
+                                        <img th:src="@{/assets/images/avatars/avatar-2.jpg}" alt="">
                                         <span class="video-post-user">Stella Johnson</span>
                                         <span class="video-post-views">938k views</span>
                                         <span class="video-post-date"> 3 weeks ago </span>
@@ -490,12 +490,12 @@
                                         <span class="video-post-count">2.3M</span>
                                         <span class="video-post-time">14:00</span>
                                         <span class="play-btn-trigger"></span>
-                                        <img src="assets/images/video-thumbal/img-4.png" alt="">
+                                        <img th:src="@{/assets/images/video-thumbal/img-4.png}" alt="">
                                     </div>
                                     <!-- Blog Post Content -->
                                     <div class="video-post-content">
                                         <h3> Adobe XD Design Tutorial Website Landing Page </h3>
-                                        <img src="assets/images/avatars/avatar-5.jpg" alt="">
+                                        <img th:src="@{/assets/images/avatars/avatar-5.jpg}" alt="">
                                         <span class="video-post-user">Alex Dolgove</span>
                                         <span class="video-post-views">531k views</span>
                                         <span class="video-post-date"> 2 weeks ago </span>
@@ -523,12 +523,12 @@
                                         <span class="video-post-count">1.4M</span>
                                         <span class="video-post-time">23:00</span>
                                         <span class="play-btn-trigger"></span>
-                                        <img src="assets/images/video-thumbal/img-5.png" alt="">
+                                        <img th:src="@{/assets/images/video-thumbal/img-5.png}" alt="">
                                     </div>
                                     <!-- Blog Post Content -->
                                     <div class="video-post-content">
                                         <h3> Learn UI/UX Designing Latest Website In Adobe XD </h3>
-                                        <img src="assets/images/avatars/avatar-4.jpg" alt="">
+                                        <img th:src="@{/assets/images/avatars/avatar-4.jpg}" alt="">
                                         <span class="video-post-user">Adrian Mohani</span>
                                         <span class="video-post-views">531k views</span>
                                         <span class="video-post-date"> 2 weeks ago </span>
@@ -608,5 +608,5 @@
     }
 </style>
 </body>
-<script src="assets/js/single-video.js"></script>
+<script th:src="@{/assets/js/single-video.js}"></script>
 </html>
