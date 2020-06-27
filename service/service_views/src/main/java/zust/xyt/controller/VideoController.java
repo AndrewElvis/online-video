@@ -39,14 +39,15 @@ public class VideoController {
     @GetMapping("/toHome")
     public String home(Model model) {
         List<LinkedHashMap> result = restTemplate.getForObject("http://SERVICE-VIDEO/video", List.class);
-        List<User> userList = new ArrayList<>();
+
         for (LinkedHashMap video : result) {
             System.out.println(video.get("userId"));
-            User user = restTemplate.getForObject("http://SERVICE-USER/user" + video.get("userId"), User.class);
-            userList.add(user);
+            User user = restTemplate.getForObject("http://SERVICE-USER/user/" + video.get("userId"), User.class);
+            video.put("userNickName", user.getNickname());
+            video.put("userAvatar", user.getAvatar());
         }
         model.addAttribute("videoList", result);
-        model.addAttribute("userList", userList);
+
         return "home";
     }
 }

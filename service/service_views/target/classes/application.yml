@@ -3,6 +3,9 @@ spring:
     cache: false
   application:
     name: service-views
+  jackson:
+    date-format: yyyy-MM-dd
+    time-zone: GMT+8
 
 eureka:
   instance:
@@ -14,3 +17,4 @@ eureka:
     decoder-name: JacksonJson
     fetch-registry: true
     register-with-eureka: true
+
