@@ -5,6 +5,8 @@ import com.aliyun.vod.upload.req.UploadStreamRequest;
 import com.aliyun.vod.upload.resp.UploadStreamResponse;
 import com.aliyuncs.DefaultAcsClient;
 import com.aliyuncs.vod.model.v20170321.DeleteVideoRequest;
+import com.aliyuncs.vod.model.v20170321.GetPlayInfoRequest;
+import com.aliyuncs.vod.model.v20170321.GetPlayInfoResponse;
 import com.baomidou.mybatisplus.extension.api.R;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
@@ -72,6 +74,42 @@ public class VodServiceImpl implements VodService {
         }catch(Exception e) {
             e.printStackTrace();
             throw new VlogException(20001,"删除视频失败");
+        }
+    }
+
+    @Override
+    public String getPlayUrl(String id) {
+        //初始化客户端、请求对象和相应对象
+        DefaultAcsClient client =
+                InitVodClient.initVodClient(ConstantVodUtils.ACCESS_KEY_ID, ConstantVodUtils.ACCESS_KEY_SECRET);
+        GetPlayInfoRequest request = new GetPlayInfoRequest();
+        GetPlayInfoResponse response = new GetPlayInfoResponse();
+
+        try {
+
+            //设置请求参数
+            //注意：这里只能获取非加密视频的播放地址
+            request.setVideoId(id);
+            //获取请求响应
+            response = client.getAcsResponse(request);
+
+            //输出请求结果
+            List<GetPlayInfoResponse.PlayInfo> playInfoList = response.getPlayInfoList();
+
+            String playUrl = null;
+            //播放地址
+            for (GetPlayInfoResponse.PlayInfo playInfo : playInfoList) {
+                playUrl = playInfo.getPlayURL();
+                System.out.print("PlayInfo.PlayURL = " + playInfo.getPlayURL() + "\n");
+            }
+            //Base信息
+            System.out.print("VideoBase.Title = " + response.getVideoBase().getTitle() + "\n");
+
+            return playUrl;
+
+        } catch (Exception e) {
+            System.out.print("ErrorMessage = " + e.getLocalizedMessage());
+            throw new VlogException(20001,"获取视频地址失败");
         }
     }
 
