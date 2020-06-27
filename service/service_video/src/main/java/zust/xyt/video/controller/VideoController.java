@@ -29,6 +29,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/video")
+@CrossOrigin
 public class VideoController {
     @Autowired
     private VideoService videoService;
