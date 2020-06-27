@@ -142,7 +142,7 @@
                             <a th:href="@{'/views/video/' + ${video.sourceId} }" class="video-post">
                                 <!-- Blog Post Thumbnail -->
                                 <div class="video-post-thumbnail">
-                                    <span class="video-post-count">1.4M</span>
+                                    <span class="video-post-count" th:text="${video.count}"></span>
                                     <span class="video-post-time">23:00</span>
                                     <span class="play-btn-trigger"></span>
                                     <!-- option menu -->

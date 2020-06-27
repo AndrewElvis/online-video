@@ -42,8 +42,8 @@
             <div class="sections">
                 <h3> 我的订阅 </h3>
                 <ul>
-                    <li th:each="subscribe : ${subscribes}"><a href="single-channal.html"><img src=${subscribe.avatar} alt="">
-                        <span>${subscribe.name}</span> <span class="dot-notiv"></span></a> </li>
+                    <li th:each="subscribe,itemStat : ${subscribes}" th:if="${itemStat.count < 5}"><a href="single-channal.html"><img src=${subscribe.avatar} alt="">
+                        <span th:text=" ${subscribe.name}"></span> <span class="dot-notiv"></span></a> </li>
                 </ul>
 
                 <!-- view more subcription-->
