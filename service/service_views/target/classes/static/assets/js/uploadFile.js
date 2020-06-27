@@ -1,3 +1,4 @@
+<script>
 new Vue({
     el: '#app',
     data: function() {
@@ -36,3 +37,4 @@ new Vue({
         }
     }
 })
+</script>

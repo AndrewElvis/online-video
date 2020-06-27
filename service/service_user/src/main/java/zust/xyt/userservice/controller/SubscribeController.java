@@ -100,7 +100,7 @@ public class SubscribeController {
      */
     @ApiOperation(value = "单个用户的关注列表")
     @GetMapping("{id}")
-    public ResponseResult getById(@ApiParam(name = "id",value = "用户id",required = true)@PathVariable String id ){
+    public ArrayList<SubscribeVo> getById(@ApiParam(name = "id",value = "用户id",required = true)@PathVariable String id ){
         HashMap<String, Object> Map = new HashMap<>();
         Map.put("subscriber_id",id);
         Collection<Subscribe> subscribes = subscribeService.listByMap(Map);
@@ -118,7 +118,7 @@ public class SubscribeController {
             subscribeVo.setSubscribeTime(next.getGmtCreate().toString());
             users.add(subscribeVo);
         }
-        return ResponseResult.ok().data("rows",users);
+        return users;
     }
 }
 

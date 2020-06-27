@@ -42,14 +42,8 @@
             <div class="sections">
                 <h3> 我的订阅 </h3>
                 <ul>
-                    <li><a href="single-channal.html"> <img src="assets/images/avatars/avatar-3.jpg" alt="">
-                        <span> Stella Johnson </span> <span class="dot-notiv"></span></a></li>
-                    <li><a href="single-channal.html"> <img src="assets/images/avatars/avatar-2.jpg" alt="">
-                        <span> Alex Dolgove </span> <span class="dot-notiv"></span></a></li>
-                    <li><a href="single-channal.html"> <img src="assets/images/avatars/avatar-4.jpg" alt="">
-                        <span> Adrian Mohani </span> </a></li>
-                    <li><a href="single-channal.html"> <img src="assets/images/avatars/avatar-2.jpg" alt="">
-                        <span> Stella Johnson </span> </a></li>
+                    <li th:each="subscribe : ${subscribes}"><a href="single-channal.html"><img src=${subscribe.avatar} alt="">
+                        <span>${subscribe.name}</span> <span class="dot-notiv"></span></a> </li>
                 </ul>
 
                 <!-- view more subcription-->
