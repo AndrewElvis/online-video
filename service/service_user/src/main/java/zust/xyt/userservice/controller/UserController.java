@@ -10,6 +10,7 @@ import io.swagger.annotations.ApiParam;
 import io.swagger.models.auth.In;
 import org.apache.poi.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
@@ -108,6 +109,8 @@ public class UserController {
         String nickname = userQuery.getNickname();
         String begin = userQuery.getBegin();
         String end = userQuery.getEnd();
+        int fansMinNum = userQuery.getFansMinNum();
+        int subscribeMinNum = userQuery.getSubscribeMinNum();
         if (!StringUtils.isEmpty(name)) {
             wrapper.like("name", name);
         }
@@ -122,6 +125,12 @@ public class UserController {
         }
         if (!StringUtils.isEmpty(end)) {
             wrapper.le("gmt_modified", end);
+        }
+        if (!StringUtils.isEmpty(fansMinNum)){
+            wrapper.ge("fans_num",fansMinNum);
+        }
+        if (!StringUtils.isEmpty(subscribeMinNum)){
+            wrapper.ge("subscribe_num",subscribeMinNum);
         }
 
         userService.page(page, wrapper);

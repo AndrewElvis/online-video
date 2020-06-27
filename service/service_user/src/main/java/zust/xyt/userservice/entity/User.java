@@ -72,8 +72,12 @@ public class User implements Serializable {
     @ApiModelProperty(value = "是否禁用 1（true）已禁用，  0（false）未禁用")
     private Boolean isDisabled;
 
+    @ApiModelProperty(value = "粉丝数量")
+    private int fansNum;
+
+    @ApiModelProperty(value = "关注数量")
+    private int subscribeNum;
+
     @ApiModelProperty(value = "是否为管理员 1(管理员)  0（普通用户)")
     private Integer isAdmin;
-
-
 }

@@ -20,6 +20,8 @@
 
     <script src="assets/js/axios.min.js"></script>
     <script src="assets/js/test.js"></script>
+    <script src="assets/js/uploadFile.js"></script>
+
     <!-- 引入样式 -->
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     <!-- 引入组件库 -->
@@ -29,6 +31,8 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/night-mode.css">
     <link rel="stylesheet" href="assets/css/framework.css">
+    <link rel="stylesheet" href="assets/css/uploadFile.css">
+
 
     <!-- icons
     ================================================== -->
@@ -811,7 +815,7 @@
 
 </body>
 
-<!--<script>
+<script>
     new Vue({
         el: '#app',
         data: function() {
@@ -850,7 +854,25 @@
             }
         }
     })
-</script>-->
+</script>
+<style>
+    .el-dropdown-menu {
+        width: 450px;
+    }
+    .el-dropdown {
+        vertical-align: top;
+    }
+    .el-dropdown + .el-dropdown {
+        margin-left: 15px;
+    }
+    .el-icon-arrow-down {
+        font-size: 12px;
+    }
+    .el-form {
+        width: 400px;
+        margin-left: 20px;
+    }
+</style>
 
 
 </html>
