@@ -26,6 +26,8 @@
     <!-- 引入组件库 -->
     <script src="https://unpkg.com/element-ui/lib/index.js"></script>
 
+
+
     <!-- CSS 
     ================================================== -->
     <link rel="stylesheet" href="assets/css/style.css">
@@ -69,7 +71,7 @@
                                 uk-toggle="target: #video-box ; cls: video-resized-hedden uk-animation-slide-left"></span>
 
                             <div class="embed-video">
-                                <iframe :src="videoUrl" frameborder="0"
+                                <iframe th:src="${url}" frameborder="0"
                                     uk-video="automute: true" allowfullscreen uk-responsive></iframe>
                             </div>
                         </div>
@@ -584,53 +586,7 @@
 </div>
 
 <script>
-    new Vue({
-        el: '#app',
-        data: function() {
-            return {
-                options: [{
-                    value: 'sights',
-                    label: '风景'
-                }, {
-                    value: 'entertainment',
-                    label: '娱乐'
-                }, {
-                    value: 'food',
-                    label: '美食'
-                }],
-                value: [],
-                fileList: [],
-                videoUrl: 'https://outin-728f05bbae0011ea98ee00163e1c9256.oss-cn-shanghai.aliyuncs.com/sv/2fc50f94-172f12e4b44/2fc50f94-172f12e4b44.mp4?Expires=1593187965&OSSAccessKeyId=LTAIVVfYx6D0HeL2&Signature=eT8Z4j1o%2FomyLeHDWqHg7Zkgq84%3D'
-            }
-        },
-        methods: {
-            handleRemove(file, fileList) {
-                console.log(file, fileList);
-            },
-            handlePreview(file) {
-                console.log(file);
-            },
-            handleExceed(files, fileList) {
-                this.$message.warning(`当前限制选择 1 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
-            },
-            beforeRemove(file, fileList) {
-                return this.$confirm(`确定移除 ${ file.name }？`);
-            },
-            submitForm(formName) {
-                this.$refs[formName].validate((valid) => {
-                    if (valid) {
-                        alert('submit!');
-                    } else {
-                        console.log('error submit!!');
-                        return false;
-                    }
-                });
-            },
-            resetForm(formName) {
-                this.$refs[formName].resetFields();
-            }
-        }
-    })
+
 </script>
 <style>
     .el-dropdown-menu {
@@ -651,5 +607,5 @@
     }
 </style>
 </body>
-
+<script src="assets/js/single-video.js"></script>
 </html>
