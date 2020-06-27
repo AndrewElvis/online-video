@@ -4,10 +4,18 @@
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/common" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/common/commons_utils" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/common/commons_utils/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/common/service_base" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/common/service_base/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/eureka_server/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/service" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/service/service_user" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/service/service_user/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/service/service_video" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/service/service_video/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/service/service_views" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/service/service_views/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/service/src/main/resources" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

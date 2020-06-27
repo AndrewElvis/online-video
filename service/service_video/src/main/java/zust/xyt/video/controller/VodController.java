@@ -1,9 +1,7 @@
 package zust.xyt.video.controller;
 
 import com.aliyuncs.DefaultAcsClient;
-import com.aliyuncs.vod.model.v20170321.DeleteVideoRequest;
-import com.aliyuncs.vod.model.v20170321.GetVideoPlayAuthRequest;
-import com.aliyuncs.vod.model.v20170321.GetVideoPlayAuthResponse;
+import com.aliyuncs.vod.model.v20170321.*;
 import com.baomidou.mybatisplus.extension.api.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +12,7 @@ import zust.xyt.video.service.VodService;
 import zust.xyt.video.utils.ConstantVodUtils;
 import zust.xyt.video.utils.InitVodClient;
 
+import javax.ws.rs.Path;
 import java.util.List;
 
 /**
@@ -82,5 +81,11 @@ public class VodController {
         }catch(Exception e) {
             throw new VlogException(20001,"获取凭证失败");
         }
+    }
+
+    @GetMapping("/getPlayUrl/{id}")
+    public ResponseResult getPlayUrl(@PathVariable("id") String id) {
+        String playUrl = vodService.getPlayUrl(id);
+        return ResponseResult.ok().data("url", playUrl);
     }
 }

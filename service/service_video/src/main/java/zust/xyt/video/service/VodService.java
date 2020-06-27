@@ -18,4 +18,6 @@ public interface VodService {
     void removeMoreAliVideo(List videoIdList);
 
     ResponseResult removeAliVideo(String id);
+
+    String getPlayUrl(String id);
 }
