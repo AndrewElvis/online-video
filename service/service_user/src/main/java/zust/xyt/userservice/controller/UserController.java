@@ -154,9 +154,8 @@ public class UserController {
      */
     @ApiOperation(value = "根据用户ID查询用户")
     @GetMapping("{id}")
-    public ResponseResult getById(@ApiParam(name = "id",value = "讲师",required = true) @PathVariable String id){
-        User user = userService.getById(id);
-        return ResponseResult.ok().data("item",user);
+    public User getById(@ApiParam(name = "id",value = "讲师",required = true) @PathVariable String id){
+        return userService.getById(id);
     }
 
     /**

@@ -25,7 +25,7 @@ public class LoginController {
                         Map<String, Object> map, HttpSession session) {
         if(!StringUtils.isEmpty(username) && "123456".equals(password)) {
             session.setAttribute("loginUser", username);
-            return "redirect:/home.html";
+            return "redirect:/views/video/toHome";
         } else {
             map.put("msg", "用户名密码错误");
             return "login";
