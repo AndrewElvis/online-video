@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import zust.xyt.ResponseResult;
 import zust.xyt.exceptionhandler.VlogException;
+import zust.xyt.video.service.VideoService;
 import zust.xyt.video.service.VodService;
 import zust.xyt.video.utils.ConstantVodUtils;
 import zust.xyt.video.utils.InitVodClient;
@@ -27,6 +28,9 @@ public class VodController {
 
     @Autowired
     private VodService vodService;
+
+    @Autowired
+    private VideoService videoService;
 
     //上传视频到阿里云
     @PostMapping("uploadAliVideo")
