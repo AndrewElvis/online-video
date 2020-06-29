@@ -20,6 +20,7 @@ import zust.xyt.exceptionhandler.VlogException;
 import zust.xyt.userservice.entity.Subscribe;
 import zust.xyt.userservice.entity.User;
 import zust.xyt.userservice.entity.vo.ChannalVo;
+import zust.xyt.userservice.entity.vo.SubscribeVo;
 import zust.xyt.userservice.entity.vo.UserQuery;
 import zust.xyt.userservice.service.SubscribeService;
 import zust.xyt.userservice.service.UserService;
@@ -175,6 +176,26 @@ public class UserController {
         long total = page.getTotal();
         List<User> records = page.getRecords();
         return ResponseResult.ok().data("total", total).data("rows", records);
+    }
+
+    @ApiOperation(value = "用户粉丝数排行榜")
+    @GetMapping("/topChannals")
+    public List<ChannalVo> topChannals(){
+        QueryWrapper<User> wrapper = new QueryWrapper<>();
+        wrapper.orderByDesc("fans_num");
+        List<User> users = userService.list(wrapper);
+        Iterator<User> iterator = users.iterator();
+        ArrayList<ChannalVo> channals = new ArrayList<>();
+        while (iterator.hasNext()){
+            User next = iterator.next();
+            ChannalVo channal = new ChannalVo();
+            channal.setId(next.getId());
+            channal.setName(next.getName());
+            channal.setFansNum(next.getFansNum());
+            channal.setAvatar(next.getAvatar());
+            channals.add(channal);
+        }
+        return channals;
     }
 
     /**

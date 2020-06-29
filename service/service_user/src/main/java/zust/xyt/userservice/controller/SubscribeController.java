@@ -111,6 +111,7 @@ public class SubscribeController {
             SubscribeVo subscribeVo = new SubscribeVo();
             String subscribeId = next.getSubscribeId();
             User user = userService.getById(subscribeId);
+            subscribeVo.setId(user.getId());
             subscribeVo.setName(user.getName());
             subscribeVo.setAvatar(user.getAvatar());
             subscribeVo.setNickname(user.getNickname());
