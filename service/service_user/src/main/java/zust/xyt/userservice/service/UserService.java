@@ -2,6 +2,9 @@ package zust.xyt.userservice.service;
 
 import zust.xyt.userservice.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
+import zust.xyt.userservice.entity.vo.ChannalVo;
+
+import java.util.List;
 
 /**
  * <p>

@@ -9,6 +9,8 @@ import lombok.Data;
  */
 @Data
 public class SubscribeVo {
+    @ApiModelProperty(value = "被关注者id")
+    private String id;
 
     @ApiModelProperty(value = "被关注者用户名")
     private String name;
