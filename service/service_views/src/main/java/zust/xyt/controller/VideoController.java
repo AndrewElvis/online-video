@@ -30,8 +30,7 @@ public class VideoController {
 
     @GetMapping("/{id}")
     public String singleVideo(@PathVariable String id, Model model) {
-        ResponseResult res = restTemplate.getForObject("http://SERVICE-VIDEO/vod/getPlayUrl/" + id,
-                ResponseResult.class);
+        ResponseResult res = restTemplate.getForObject("http://SERVICE-VIDEO/vod/getPlayUrl/" + id, ResponseResult.class);
         Video video = restTemplate.getForObject("http://SERVICE-VIDEO/video/getBySourceId/" + id, Video.class);
         List<LinkedHashMap> videoList = restTemplate.getForObject("http://SERVICE-VIDEO/video", List.class);
         for (LinkedHashMap v : videoList) {
@@ -82,9 +81,4 @@ public class VideoController {
         return "home";
     }
 
-    @GetMapping("/toChannel/{id}")
-    public String channel(@PathVariable String id, Model model) {
-
-        return "single-channal";
-    }
 }

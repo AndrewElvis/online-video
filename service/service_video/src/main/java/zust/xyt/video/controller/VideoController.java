@@ -135,5 +135,22 @@ public class VideoController {
         return ResponseResult.ok().data("total", total).data("rows", records);
     }
 
+    @GetMapping("/getByUserId/{id}")
+    public List<Video> getVideoByUserId(@PathVariable String id) {
+        QueryWrapper<Video> wrapper = new QueryWrapper<>();
+        wrapper.eq("user_id", id);
+        List<Video> videoList = videoService.list(wrapper);
+        return videoList;
+    }
+
+    @GetMapping("/getMostCountVideoByUserId/{id}")
+    public Video getMostCountVideoByUserId(@PathVariable String id) {
+        QueryWrapper<Video> wrapper = new QueryWrapper<>();
+        wrapper.eq("user_id", id);
+        wrapper.orderByDesc("count");
+        wrapper.last("limit 1");
+        return videoService.getOne(wrapper);
+    }
+
 }
 
