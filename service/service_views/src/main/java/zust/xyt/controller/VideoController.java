@@ -48,11 +48,26 @@ public class VideoController {
         return "single-video";
     }
 
+    @GetMapping("/toChannals/{id}")
+    public String channals(@PathVariable String id,Model model){
+        ArrayList topChannals = restTemplate.getForObject("http://SERVICE-USER/user/topChannals", ArrayList.class);
+        //bar
+        ArrayList users = restTemplate.getForObject("http://SERVICE-USER/user/subscribe/" + id, ArrayList.class);
+        User me = restTemplate.getForObject("http://SERVICE-USER/user/" + id, User.class);
+        model.addAttribute("user",me);
+        model.addAttribute("subscribes",users);
+        model.addAttribute("topChannals",topChannals);
+        return "browse-channals";
+    }
+
+
     @GetMapping("/toHome/{id}")
     public String home(@PathVariable String id, Model model) {
         List<LinkedHashMap> result = restTemplate.getForObject("http://SERVICE-VIDEO/video", List.class);
+        //bar
         ArrayList users = restTemplate.getForObject("http://SERVICE-USER/user/subscribe/" + id, ArrayList.class);
         ArrayList findChannals = restTemplate.getForObject("http://SERVICE-USER/user/findChannals/" + id, ArrayList.class);
+        //bar
         User me = restTemplate.getForObject("http://SERVICE-USER/user/" + id, User.class);
         model.addAttribute("user",me);
         model.addAttribute("findChannals",findChannals);

@@ -30,7 +30,6 @@
     <link rel="stylesheet" th:href="@{/assets/css/style.css}">
     <link rel="stylesheet" th:href="@{/assets/css/night-mode.css}">
     <link rel="stylesheet" th:href="@{/assets/css/framework.css}">
-<!--    <link rel="stylesheet" th:href="@{/assets/css/uploadFile.css}">-->
 
 
     <!-- icons
@@ -46,13 +45,6 @@
 </head>
 
 <body>
-
-    <!--<div id="app">
-        <div v-for="user in userList">
-            {{user.name}} &#45;&#45; {{user.intro}}
-        </div>
-        {{teacher.name}}
-    </div>-->
 
 
 <div id="app">
@@ -120,7 +112,6 @@
                     <div class="grid-slider-header">
                         <div>
                             <h3> 最新视频 </h3>
-<!--                            <p> Channals You are Fallowing. </p>-->
                         </div>
                         <div class="grid-slider-header-link">
 
@@ -187,230 +178,6 @@
 
                 <!-- section header for slider 1 -->
 
-                <!--<div class="section-header mt-5">
-                    <div class="section-header-left">
-                        <h3> Updates from Subscriptions </h3>
-                        <p> Channals You are Subscriped</p>
-                    </div>
-                    <div class="section-header-right">
-                        <a href="#" class="see-all"> See all</a>
-                    </div>
-                </div>-->
-
-                <!-- Videos sliders 1 -->
-
-                <!--<div class="section-small pt-0">
-                    <div uk-slider="finite: true">
-
-                        <ul class="uk-slider-items uk-child-width-1-4@m uk-child-width-1-3@s uk-grid mb-3">
-
-                            <li>
-                                <a th:href="@{/single-video.html}" class="video-post">
-                                    &lt;!&ndash; Blog Post Thumbnail &ndash;&gt;
-                                    <div class="video-post-thumbnail">
-                                        <span class="video-post-count">1.4M</span>
-                                        <span class="video-post-time">23:00</span>
-                                        <span class="play-btn-trigger"></span>
-                                        &lt;!&ndash; option menu &ndash;&gt;
-                                        <span class="btn-option">
-                                            <i class="icon-feather-more-vertical"></i>
-                                        </span>
-                                        <div class="dropdown-option-nav"
-                                            uk-dropdown="pos: bottom-right ;mode : hover ;animation: uk-animation-slide-bottom-small">
-                                            <ul>
-                                                <li>
-                                                    <span> <i class="uil-history"></i> Watch Later</span>
-                                                </li>
-                                                <li>
-                                                    <span> <i class="uil-bookmark"></i> Add Bookmark</span>
-                                                </li>
-                                                <li>
-                                                    <span> <i class="uil-share-alt"></i> Share Your Friends</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-
-                                        <img th:src="@{/assets/images/video-thumbal/img-1.png}" alt="">
-
-                                    </div>
-
-                                    &lt;!&ndash; Blog Post Content &ndash;&gt;
-                                    <div class="video-post-content">
-                                        <h3> Learn How-To Design & Prototype in Adobe XD Tutorial </h3>
-                                        <img th:src="@{/assets/images/avatars/avatar-3.jpg}" alt="">
-                                        <span class="video-post-user">Jonathan Madano</span>
-                                        <span class="video-post-views">531k views</span>
-                                        <span class="video-post-date"> 2 weeks ago </span>
-                                    </div>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a th:href="@{/single-video.html}" class="video-post">
-                                    &lt;!&ndash; Blog Post Thumbnail &ndash;&gt;
-                                    <div class="video-post-thumbnail">
-                                        <span class="video-post-count">2.7k</span>
-                                        <span class="video-post-time">40:00</span>
-                                        <span class="play-btn-trigger"></span>
-                                        &lt;!&ndash; option menu &ndash;&gt;
-                                        <span class="btn-option">
-                                            <i class="icon-feather-more-vertical"></i>
-                                        </span>
-                                        <div class="dropdown-option-nav"
-                                            uk-dropdown="pos: bottom-right ;mode : hover;animation: uk-animation-slide-bottom-small">
-                                            <ul>
-                                                <li>
-                                                    <span> <i class="uil-history"></i> Watch Later</span>
-                                                </li>
-                                                <li>
-                                                    <span> <i class="uil-bookmark"></i> Add Bookmark</span>
-                                                </li>
-                                                <li>
-                                                    <span> <i class="uil-share-alt"></i> Share Your Friends</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <img src="assets/images/video-thumbal/img-3.png" alt="">
-                                    </div>
-                                    &lt;!&ndash; Blog Post Content &ndash;&gt;
-                                    <div class="video-post-content">
-                                        <h3> Learn How to Prototype Faster with Mockplus! in 2020 </h3>
-                                        <img th:src="@{/assets/images/avatars/avatar-2.jpg}" alt="">
-                                        <span class="video-post-user">Stella Johnson</span>
-                                        <span class="video-post-views">938k views</span>
-                                        <span class="video-post-date"> 3 weeks ago </span>
-                                    </div>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a th:href="@{/single-video.html}" class="video-post">
-                                    &lt;!&ndash; Blog Post Thumbnail &ndash;&gt;
-                                    <div class="video-post-thumbnail">
-                                        <span class="video-post-count">2.3M</span>
-                                        <span class="video-post-time">14:00</span>
-                                        <span class="play-btn-trigger"></span>
-                                        &lt;!&ndash; option menu &ndash;&gt;
-                                        <span class="btn-option">
-                                            <i class="icon-feather-more-vertical"></i>
-                                        </span>
-                                        <div class="dropdown-option-nav"
-                                            uk-dropdown="pos: bottom-right ;mode : hover;animation: uk-animation-slide-bottom-small">
-                                            <ul>
-                                                <li>
-                                                    <span> <i class="uil-history"></i> Watch Later</span>
-                                                </li>
-                                                <li>
-                                                    <span> <i class="uil-bookmark"></i> Add Bookmark</span>
-                                                </li>
-                                                <li>
-                                                    <span> <i class="uil-share-alt"></i> Share Your Friends</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <img src="assets/images/video-thumbal/img-4.png" alt="">
-                                    </div>
-                                    &lt;!&ndash; Blog Post Content &ndash;&gt;
-                                    <div class="video-post-content">
-                                        <h3> Adobe XD Design Tutorial Website Landing Page </h3>
-                                        <img th:src="@{/assets/images/avatars/avatar-5.jpg}" alt="">
-                                        <span class="video-post-user">Alex Dolgove</span>
-                                        <span class="video-post-views">531k views</span>
-                                        <span class="video-post-date"> 2 weeks ago </span>
-                                    </div>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a th:href="@{/single-video.html}" class="video-post">
-                                    &lt;!&ndash; Blog Post Thumbnail &ndash;&gt;
-                                    <div class="video-post-thumbnail">
-                                        <span class="video-post-count">1.4M</span>
-                                        <span class="video-post-time">23:00</span>
-                                        <span class="play-btn-trigger"></span>
-                                        &lt;!&ndash; option menu &ndash;&gt;
-                                        <span class="btn-option">
-                                            <i class="icon-feather-more-vertical"></i>
-                                        </span>
-                                        <div class="dropdown-option-nav"
-                                            uk-dropdown="pos: bottom-right ;mode : hover ;animation: uk-animation-slide-bottom-small">
-                                            <ul>
-                                                <li>
-                                                    <span> <i class="uil-history"></i> Watch Later</span>
-                                                </li>
-                                                <li>
-                                                    <span> <i class="uil-bookmark"></i> Add Bookmark</span>
-                                                </li>
-                                                <li>
-                                                    <span> <i class="uil-share-alt"></i> Share Your Friends</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <img th:src="@{/assets/images/video-thumbal/img-5.png}" alt="">
-                                    </div>
-                                    &lt;!&ndash; Blog Post Content &ndash;&gt;
-                                    <div class="video-post-content">
-                                        <h3> Learn UI/UX Designing Latest Website In Adobe XD </h3>
-                                        <img th:src="@{/assets/images/avatars/avatar-4.jpg}" alt="">
-                                        <span class="video-post-user">Adrian Mohani</span>
-                                        <span class="video-post-views">531k views</span>
-                                        <span class="video-post-date"> 2 weeks ago </span>
-                                    </div>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a th:href="@{/single-video.html}" class="video-post">
-                                    &lt;!&ndash; Blog Post Thumbnail &ndash;&gt;
-                                    <div class="video-post-thumbnail">
-                                        <span class="video-post-count">1.4M</span>
-                                        <span class="video-post-time">23:00</span>
-                                        <span class="play-btn-trigger"></span>
-                                        &lt;!&ndash; option menu &ndash;&gt;
-                                        <span class="btn-option">
-                                            <i class="icon-feather-more-vertical"></i>
-                                        </span>
-                                        <div class="dropdown-option-nav"
-                                            uk-dropdown="pos: bottom-right ;mode : hover ;animation: uk-animation-slide-bottom-small">
-                                            <ul>
-                                                <li>
-                                                    <span> <i class="uil-history"></i> Watch Later</span>
-                                                </li>
-                                                <li>
-                                                    <span> <i class="uil-bookmark"></i> Add Bookmark</span>
-                                                </li>
-                                                <li>
-                                                    <span> <i class="uil-share-alt"></i> Share Your Friends</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-
-                                        <img th:src="@{/assets/images/video-thumbal/img-1.png}" alt="">
-
-                                    </div>
-
-                                    &lt;!&ndash; Blog Post Content &ndash;&gt;
-                                    <div class="video-post-content">
-                                        <h3> Learn How-To Design & Prototype in Adobe XD Tutorial </h3>
-                                        <img th:src="@{/assets/images/avatars/avatar-3.jpg}" alt="">
-                                        <span class="video-post-user">Jonathan Madano</span>
-                                        <span class="video-post-views">531k views</span>
-                                        <span class="video-post-date"> 2 weeks ago </span>
-                                    </div>
-                                </a>
-                            </li>
-
-                        </ul>
-
-                        <a class="uk-position-center-left-out uk-position-small slidenav-prev" href="#"
-                            uk-slider-item="previous"></a>
-                        <a class="uk-position-center-right-out uk-position-small slidenav-next" href="#"
-                            uk-slider-item="next"></a>
-
-                    </div>
-
-                </div>-->
-
                 <hr class="m-0">
 
                 <!-- Find channals sliders 1 -->
@@ -437,7 +204,7 @@
                         <ul class="uk-slider-items uk-child-width-1-5@m uk-child-width-1-2@s uk-grid mb-3">
             
                                         <li  th:each="channals,itemStat : ${findChannals}" th:if="${itemStat.count < 10}" >
-                                            <a th:href="@{/single-channal.html}">
+                                            <a th:href="@{'/view/channal/'+ ${topChannal.id}}" >
                                                 <div class="single-channal">
                                                     <div class="single-channal-creator">
                                                         <img th:src="${channals.avatar}" alt="">
@@ -450,83 +217,7 @@
                                                 </div>
                                             </a>
                                         </li>
-            
-<!--                                        <li>-->
-<!--                                            <a th:href="single-channal.html">-->
-<!--                                                <div class="single-channal">-->
-<!--                                                    <div class="single-channal-creator">-->
-<!--                                                        <img th:src="@{/assets/images/avatars/avatar-2.jpg}" alt="">-->
-<!--                                                    </div>-->
-<!--                                                    <div class="single-channal-body">-->
-<!--                                                        <h4>Supercoolben </h4>-->
-<!--                                                        <p> 29.6M subscribers </p>-->
-<!--                                                        <a href="#" class="button primary small circle"> Subscribe </a>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
-<!--                                            </a>-->
-<!--                                        </li>-->
-<!--            -->
-<!--                                        <li>-->
-<!--                                            <a th:href="@{/single-channal.html}">-->
-<!--                                                <div class="single-channal">-->
-<!--                                                    <div class="single-channal-creator">-->
-<!--                                                        <img th:src="@{/assets/images/avatars/avatar-3.jpg}" alt="">-->
-<!--                                                    </div>-->
-<!--                                                    <div class="single-channal-body">-->
-<!--                                                        <h4>The Young Turks </h4>-->
-<!--                                                        <p> 32.8M subscribers </p>-->
-<!--                                                        <a href="#" class="button primary small circle"> Subscribe </a>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
-<!--                                            </a>-->
-<!--                                        </li>-->
-<!--            -->
-<!--                                        <li>-->
-<!--                                            <a th:href="single-channal.html">-->
-<!--                                                <div class="single-channal">-->
-<!--                                                    <div class="single-channal-creator">-->
-<!--                                                        <img th:src="@{/assets/images/avatars/avatar-4.jpg}" alt="">-->
-<!--                                                    </div>-->
-<!--                                                    <div class="single-channal-body">-->
-<!--                                                        <h4>TechSmartt </h4>-->
-<!--                                                        <p> 19.6M subscribers </p>-->
-<!--                                                        <a href="#" class="button primary small circle"> Subscribe </a>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
-<!--                                            </a>-->
-<!--                                        </li>-->
-<!--            -->
-<!--                                        <li>-->
-<!--                                            <a th:href="@{/single-channal.html}">-->
-<!--                                                <div class="single-channal">-->
-<!--                                                    <div class="single-channal-creator">-->
-<!--                                                        <img th:src="@{/assets/images/avatars/avatar-5.jpg}" alt="">-->
-<!--                                                    </div>-->
-<!--                                                    <div class="single-channal-body">-->
-<!--                                                        <h4>World Rugby </h4>-->
-<!--                                                        <p> 23.2M subscribers </p>-->
-<!--                                                        <a href="#" class="button primary small circle"> Subscribe </a>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
-<!--                                            </a>-->
-<!--                                        </li>-->
-<!--            -->
-<!--            -->
-<!--                                        <li>-->
-<!--                                            <a th:href="@{/single-channal.html}">-->
-<!--                                                <div class="single-channal">-->
-<!--                                                    <div class="single-channal-creator">-->
-<!--                                                        <img th:src="@{/assets/images/avatars/avatar-1.jpg}" alt="">-->
-<!--                                                    </div>-->
-<!--                                                    <div class="single-channal-body">-->
-<!--                                                        <h4>RiceGum </h4>-->
-<!--                                                        <p> 29.6M subscribers </p>-->
-<!--                                                        <a href="#" class="button primary small circle"> Subscribe </a>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
-<!--                                            </a>-->
-<!--                                        </li>-->
-<!--            -->
+
                                     </ul>
 
                     </div>
@@ -536,105 +227,9 @@
 
                 <!-- find channals  header -->
 
-                <!--<div class="section-header mt-5">
-                    <div class="section-header-left">
-                        <h4> Find Channals</h4>
-                        <p> Channals Your Friends are in . </p>
-                    </div>
-                    <div class="section-header-right">
-                        <a th:href="@{/browse-channals.html}" class="see-all"> See all</a>
-                    </div>
-                </div>-->
 
                 <!-- find channals -->
-                <!--<div class="uk-child-width-1-2@m" uk-grid>
-                    <div>
 
-                        <div class="uk-grid-small" uk-grid>
-                            <div class="uk-width-auto">
-                                <img th:src="@{/assets/images/avatars/avatar-2.jpg}" class="rounded-lg" width="80"
-                                     alt="">
-                            </div>
-                            <div class="uk-width-expand">
-                                <h4 class="mb-2 uk-text-truncate"> Jonathan Madano</h4>
-                                <p class="uk-text-small">
-                                    <span> 13 Subscribers - </span>
-                                    <span> 15 Video per week</span>
-                                </p>
-                            </div>
-                            <div class="uk-width-auto">
-                                <a th:href="@{/single-channal.html}" class="button soft-primary circle"> <i
-                                        class="uil-plus mr-2"></i>Flow</a>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div>
-
-                        <div class="uk-grid-small" uk-grid>
-                            <div class="uk-width-auto">
-
-                                <img th:src="@{/assets/images/avatars/avatar-4.jpg}" class="rounded-lg" width="80"
-                                     alt="">
-                            </div>
-                            <div class="uk-width-expand">
-                                <h4 class="mb-2 uk-text-truncate"> Ninja Medai</h4>
-                                <p class="uk-text-small">
-                                    <span> 13 Subscribers - </span>
-                                    <span> 15 Video per week</span>
-                                </p>
-                            </div>
-                            <div class="uk-width-auto">
-                                <a th:href="@{/single-channal.html}" class="button soft-primary circle"> <i
-                                        class="uil-plus mr-2"></i>Flow</a>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div>
-
-                        <div class="uk-grid-small" uk-grid>
-                            <div class="uk-width-auto">
-                                <img th:src="@{/assets/images/avatars/avatar-3.jpg}" class="rounded-lg" width="80"
-                                     alt="">
-                            </div>
-                            <div class="uk-width-expand">
-                                <h4 class="mb-2 uk-text-truncate"> Alex Dolgove</h4>
-                                <p class="uk-text-small">
-                                    <span> 13 Subscribers - </span>
-                                    <span> 15 Video per week</span>
-                                </p>
-                            </div>
-                            <div class="uk-width-auto">
-                                <a th:href="@{single-channal.html}" class="button soft-primary circle"> <i
-                                        class="uil-plus mr-2"></i>Flow</a>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div>
-
-                        <div class="uk-grid-small" uk-grid>
-                            <div class="uk-width-auto">
-                                <img th:src="@{assets/images/avatars/avatar-1.jpg}" class="rounded-lg" width="80"
-                                     alt="">
-                            </div>
-                            <div class="uk-width-expand">
-                                <h4 class="mb-2 uk-text-truncate"> Adrian Mohani </h4>
-                                <p class="uk-text-small">
-                                    <span> 13 Subscribers - </span>
-                                    <span> 15 Video per week</span>
-                                </p>
-                            </div>
-                            <div class="uk-width-auto">
-                                <a th:href="@{/single-channal.html}" class="button soft-primary circle"> <i
-                                        class="uil-plus mr-2"></i>Flow</a>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>-->
 
                 <!-- footer
                ================================================== -->

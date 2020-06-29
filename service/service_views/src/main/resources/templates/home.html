@@ -204,7 +204,7 @@
                         <ul class="uk-slider-items uk-child-width-1-5@m uk-child-width-1-2@s uk-grid mb-3">
             
                                         <li  th:each="channals,itemStat : ${findChannals}" th:if="${itemStat.count < 10}" >
-                                            <a th:href="@{/single-channal.html}">
+                                            <a th:href="@{'/view/channal/'+ ${topChannal.id}}" >
                                                 <div class="single-channal">
                                                     <div class="single-channal-creator">
                                                         <img th:src="${channals.avatar}" alt="">

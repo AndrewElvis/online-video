@@ -1,6 +1,8 @@
 package zust.xyt.userservice.entity.vo;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiModelProperty;
+import io.swagger.annotations.ApiOperation;
 import lombok.Data;
 
 /**
@@ -9,6 +11,9 @@ import lombok.Data;
  */
 @Data
 public class ChannalVo {
+    @ApiModelProperty("用户id")
+    private String id;
+
     @ApiModelProperty("用户头像")
     private String avatar;
 
