@@ -110,10 +110,10 @@
                                 <div class="user-details-card uk-width-expand">
                                     <a href="single-channal.html" class="uk-flex">
                                         <div class="user-details-card-avatar">
-                                            <img th:src="${user.avatar}" alt="">
+                                            <img th:src="${videoUser.avatar}" alt="">
                                         </div>
                                         <div class="user-details-card-name">
-                                            <span th:text="${user.nickname}"></span> <span th:text="${user.gmtCreate}">
+                                            <span th:text="${videoUser.nickname}"></span> <span th:text="${videoUser.gmtCreate}">
                                             Published on Oct 22, 2017
                                         </span>
                                         </div>
@@ -125,7 +125,7 @@
                                     <div class="btn-subscribe">
                                         <a href="#" class="button primary"> <i class="icon-feather-plus"></i>
                                             订阅 </a>
-                                        <span class="subs-amount">1200</span>
+                                        <!--<span class="subs-amount">1200</span>-->
                                     </div>
 
                                 </div>
@@ -135,9 +135,7 @@
 
 
                             <h3> 视频简介</h3>
-                            <p th:text="${video.intro}">Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod
-                                tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                                nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat.</p>
+                            <p th:text="${video.intro}"></p>
 
                         </div>
 

@@ -28,12 +28,12 @@ public class ChannelController {
     RestTemplate restTemplate;
 
     @GetMapping("/{id}")
-    public String toSingleChannel(@PathVariable String id, Model model) {
+    public String toSingleChannel(@PathVariable String id, Model model, String userId) {
         User user = restTemplate.getForObject("http://SERVICE-USER/user/" + id, User.class);
         List<LinkedHashMap> videoList = restTemplate.getForObject("http://SERVICE-VIDEO/video/getByUserId/" + id, List.class);
         Video video = restTemplate.getForObject("http://SERVICE-VIDEO/video/getMostCountVideoByUserId/" + id,
                 Video.class);
-        User me = restTemplate.getForObject("http://SERVICE-USER/user/" + id, User.class);
+        User me = restTemplate.getForObject("http://SERVICE-USER/user/" + userId, User.class);
         ArrayList users = restTemplate.getForObject("http://SERVICE-USER/user/subscribe/" + id, ArrayList.class);
         ResponseResult res = restTemplate.getForObject("http://SERVICE-VIDEO/vod/getPlayUrl/" + video.getSourceId(),
                 ResponseResult.class);

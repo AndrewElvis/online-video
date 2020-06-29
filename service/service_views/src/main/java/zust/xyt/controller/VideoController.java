@@ -40,10 +40,13 @@ public class VideoController {
             v.put("userAvatar", user.getAvatar());
         }
         User me = restTemplate.getForObject("http://SERVICE-USER/user/" + "1273857412729692122", User.class);
+        Video singleVideo = restTemplate.getForObject("http://SERVICE-VIDEO/video/getBySourceId/" + id, Video.class);
+        User videoUser = restTemplate.getForObject("http://SERVICE-USER/user/" + singleVideo.getUserId(), User.class);
         model.addAttribute("user",me);
         model.addAttribute("url", res.getData().get("url"));
         model.addAttribute("video", video);
         model.addAttribute("videoList", videoList);
+        model.addAttribute("videoUser", videoUser);
         return "single-video";
     }
 
