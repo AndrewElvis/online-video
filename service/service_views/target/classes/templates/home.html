@@ -421,12 +421,12 @@
 
                         <div class="grid-slider-header">
                             <div>
-                                <h3> Find Channals </h3>
+                                <h3> 更多频道 </h3>
                             </div>
                             <div class="grid-slider-header-link">
 
-                                <a th:href="@{/browse-channals.html}" class="button transparent uk-visible@m"> View
-                                    all </a>
+                                <a th:href="@{/browse-channals.html}" class="button transparent uk-visible@m"> 更多
+                                    </a>
                                 <a href="#" class="slide-nav-prev" uk-slider-item="previous"></a>
                                 <a href="#" class="slide-nav-next" uk-slider-item="next"></a>
 
@@ -436,97 +436,97 @@
 
                         <ul class="uk-slider-items uk-child-width-1-5@m uk-child-width-1-2@s uk-grid mb-3">
             
-                                        <li>
+                                        <li  th:each="channals,itemStat : ${findChannals}" th:if="${itemStat.count < 10}" >
                                             <a th:href="@{/single-channal.html}">
                                                 <div class="single-channal">
                                                     <div class="single-channal-creator">
-                                                        <img th:src="@{/assets/images/avatars/avatar-4.jpg}" alt="">
+                                                        <img th:src="${channals.avatar}" alt="">
                                                     </div>
                                                     <div class="single-channal-body">
-                                                        <h4>Rosanna Pansino </h4>
-                                                        <p> 42.2M subscribers </p>
-                                                        <a href="#" class="button primary small circle"> Subscribe </a>
+                                                        <h4 th:text="${channals.name}"></h4>
+                                                        <p th:text="${channals.fansNum} + 订阅"></p>
+                                                        <a href="#" class="button primary small circle">订阅</a>
                                                     </div>
                                                 </div>
                                             </a>
                                         </li>
             
-                                        <li>
-                                            <a th:href="single-channal.html">
-                                                <div class="single-channal">
-                                                    <div class="single-channal-creator">
-                                                        <img th:src="@{/assets/images/avatars/avatar-2.jpg}" alt="">
-                                                    </div>
-                                                    <div class="single-channal-body">
-                                                        <h4>Supercoolben </h4>
-                                                        <p> 29.6M subscribers </p>
-                                                        <a href="#" class="button primary small circle"> Subscribe </a>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
-            
-                                        <li>
-                                            <a th:href="@{/single-channal.html}">
-                                                <div class="single-channal">
-                                                    <div class="single-channal-creator">
-                                                        <img th:src="@{/assets/images/avatars/avatar-3.jpg}" alt="">
-                                                    </div>
-                                                    <div class="single-channal-body">
-                                                        <h4>The Young Turks </h4>
-                                                        <p> 32.8M subscribers </p>
-                                                        <a href="#" class="button primary small circle"> Subscribe </a>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
-            
-                                        <li>
-                                            <a th:href="single-channal.html">
-                                                <div class="single-channal">
-                                                    <div class="single-channal-creator">
-                                                        <img th:src="@{/assets/images/avatars/avatar-4.jpg}" alt="">
-                                                    </div>
-                                                    <div class="single-channal-body">
-                                                        <h4>TechSmartt </h4>
-                                                        <p> 19.6M subscribers </p>
-                                                        <a href="#" class="button primary small circle"> Subscribe </a>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
-            
-                                        <li>
-                                            <a th:href="@{/single-channal.html}">
-                                                <div class="single-channal">
-                                                    <div class="single-channal-creator">
-                                                        <img th:src="@{/assets/images/avatars/avatar-5.jpg}" alt="">
-                                                    </div>
-                                                    <div class="single-channal-body">
-                                                        <h4>World Rugby </h4>
-                                                        <p> 23.2M subscribers </p>
-                                                        <a href="#" class="button primary small circle"> Subscribe </a>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
-            
-            
-                                        <li>
-                                            <a th:href="@{/single-channal.html}">
-                                                <div class="single-channal">
-                                                    <div class="single-channal-creator">
-                                                        <img th:src="@{/assets/images/avatars/avatar-1.jpg}" alt="">
-                                                    </div>
-                                                    <div class="single-channal-body">
-                                                        <h4>RiceGum </h4>
-                                                        <p> 29.6M subscribers </p>
-                                                        <a href="#" class="button primary small circle"> Subscribe </a>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
-            
+<!--                                        <li>-->
+<!--                                            <a th:href="single-channal.html">-->
+<!--                                                <div class="single-channal">-->
+<!--                                                    <div class="single-channal-creator">-->
+<!--                                                        <img th:src="@{/assets/images/avatars/avatar-2.jpg}" alt="">-->
+<!--                                                    </div>-->
+<!--                                                    <div class="single-channal-body">-->
+<!--                                                        <h4>Supercoolben </h4>-->
+<!--                                                        <p> 29.6M subscribers </p>-->
+<!--                                                        <a href="#" class="button primary small circle"> Subscribe </a>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </a>-->
+<!--                                        </li>-->
+<!--            -->
+<!--                                        <li>-->
+<!--                                            <a th:href="@{/single-channal.html}">-->
+<!--                                                <div class="single-channal">-->
+<!--                                                    <div class="single-channal-creator">-->
+<!--                                                        <img th:src="@{/assets/images/avatars/avatar-3.jpg}" alt="">-->
+<!--                                                    </div>-->
+<!--                                                    <div class="single-channal-body">-->
+<!--                                                        <h4>The Young Turks </h4>-->
+<!--                                                        <p> 32.8M subscribers </p>-->
+<!--                                                        <a href="#" class="button primary small circle"> Subscribe </a>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </a>-->
+<!--                                        </li>-->
+<!--            -->
+<!--                                        <li>-->
+<!--                                            <a th:href="single-channal.html">-->
+<!--                                                <div class="single-channal">-->
+<!--                                                    <div class="single-channal-creator">-->
+<!--                                                        <img th:src="@{/assets/images/avatars/avatar-4.jpg}" alt="">-->
+<!--                                                    </div>-->
+<!--                                                    <div class="single-channal-body">-->
+<!--                                                        <h4>TechSmartt </h4>-->
+<!--                                                        <p> 19.6M subscribers </p>-->
+<!--                                                        <a href="#" class="button primary small circle"> Subscribe </a>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </a>-->
+<!--                                        </li>-->
+<!--            -->
+<!--                                        <li>-->
+<!--                                            <a th:href="@{/single-channal.html}">-->
+<!--                                                <div class="single-channal">-->
+<!--                                                    <div class="single-channal-creator">-->
+<!--                                                        <img th:src="@{/assets/images/avatars/avatar-5.jpg}" alt="">-->
+<!--                                                    </div>-->
+<!--                                                    <div class="single-channal-body">-->
+<!--                                                        <h4>World Rugby </h4>-->
+<!--                                                        <p> 23.2M subscribers </p>-->
+<!--                                                        <a href="#" class="button primary small circle"> Subscribe </a>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </a>-->
+<!--                                        </li>-->
+<!--            -->
+<!--            -->
+<!--                                        <li>-->
+<!--                                            <a th:href="@{/single-channal.html}">-->
+<!--                                                <div class="single-channal">-->
+<!--                                                    <div class="single-channal-creator">-->
+<!--                                                        <img th:src="@{/assets/images/avatars/avatar-1.jpg}" alt="">-->
+<!--                                                    </div>-->
+<!--                                                    <div class="single-channal-body">-->
+<!--                                                        <h4>RiceGum </h4>-->
+<!--                                                        <p> 29.6M subscribers </p>-->
+<!--                                                        <a href="#" class="button primary small circle"> Subscribe </a>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </a>-->
+<!--                                        </li>-->
+<!--            -->
                                     </ul>
 
                     </div>

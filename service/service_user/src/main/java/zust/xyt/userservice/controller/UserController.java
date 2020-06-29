@@ -4,6 +4,7 @@ package zust.xyt.userservice.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.api.R;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.netflix.discovery.converters.Auto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -16,11 +17,18 @@ import org.springframework.web.bind.annotation.*;
 
 import zust.xyt.ResponseResult;
 import zust.xyt.exceptionhandler.VlogException;
+import zust.xyt.userservice.entity.Subscribe;
 import zust.xyt.userservice.entity.User;
+import zust.xyt.userservice.entity.vo.ChannalVo;
 import zust.xyt.userservice.entity.vo.UserQuery;
+import zust.xyt.userservice.service.SubscribeService;
 import zust.xyt.userservice.service.UserService;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -37,6 +45,8 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private SubscribeService subscribeService;
 
     /**
      * 查询所有用户
@@ -60,6 +70,33 @@ public class UserController {
         } else {
             return ResponseResult.error();
         }
+    }
+
+    @ApiOperation(value = "查询未关注用户")
+    @GetMapping("findChannals/{id}")
+    public List<ChannalVo> findChannals(@PathVariable String id,Model model){
+        QueryWrapper<Subscribe> wrapper = new QueryWrapper<>();
+        wrapper.like("subscriber_id",id);
+        List<Subscribe> subs = subscribeService.list(wrapper);
+        Iterator<Subscribe> iterator = subs.iterator();
+        QueryWrapper<User> userWrapper = new QueryWrapper<>();
+        userWrapper.notLike("id",id);
+        while (iterator.hasNext()){
+            String subscribeId = iterator.next().getSubscribeId();
+            userWrapper.notLike("id",subscribeId);
+        }
+        List<User> users = userService.list(userWrapper);
+        Iterator<User> userIterator = users.iterator();
+        List<ChannalVo> channals = new ArrayList<>();
+        while (userIterator.hasNext()){
+            User next = userIterator.next();
+            ChannalVo channal = new ChannalVo();
+            channal.setAvatar(next.getAvatar());
+            channal.setFansNum(next.getFansNum());
+            channal.setName(next.getName());
+            channals.add(channal);
+        }
+        return channals;
     }
 
     /**
@@ -154,7 +191,7 @@ public class UserController {
      */
     @ApiOperation(value = "根据用户ID查询用户")
     @GetMapping("{id}")
-    public User getById(@ApiParam(name = "id",value = "讲师",required = true) @PathVariable String id){
+    public User getById(@ApiParam(name = "id",value = "用户",required = true) @PathVariable String id){
         return userService.getById(id);
     }
 
