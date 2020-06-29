@@ -32,9 +32,19 @@ public class VideoController {
     public String singleVideo(@PathVariable String id, Model model) {
         ResponseResult res = restTemplate.getForObject("http://SERVICE-VIDEO/vod/getPlayUrl/" + id,
                 ResponseResult.class);
-        User me = restTemplate.getForObject("http://SERVICE-USER/user/" + "1273855936364044290", User.class);
+        Video video = restTemplate.getForObject("http://SERVICE-VIDEO/video/getBySourceId/" + id, Video.class);
+        List<LinkedHashMap> videoList = restTemplate.getForObject("http://SERVICE-VIDEO/video", List.class);
+        for (LinkedHashMap v : videoList) {
+            System.out.println(v.get("userId"));
+            User user = restTemplate.getForObject("http://SERVICE-USER/user/" + v.get("userId"), User.class);
+            v.put("userNickName", user.getNickname());
+            v.put("userAvatar", user.getAvatar());
+        }
+        User me = restTemplate.getForObject("http://SERVICE-USER/user/" + "1273857412729692122", User.class);
         model.addAttribute("user",me);
         model.addAttribute("url", res.getData().get("url"));
+        model.addAttribute("video", video);
+        model.addAttribute("videoList", videoList);
         return "single-video";
     }
 
@@ -55,5 +65,11 @@ public class VideoController {
         }
         model.addAttribute("videoList", result);
         return "home";
+    }
+
+    @GetMapping("/toChannel/{id}")
+    public String channel(@PathVariable String id, Model model) {
+
+        return "single-channal";
     }
 }

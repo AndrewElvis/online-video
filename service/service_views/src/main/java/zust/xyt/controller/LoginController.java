@@ -15,7 +15,7 @@ import java.util.Map;
  * @description
  */
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/views/user")
 public class LoginController {
 
     //    @RequestMapping(value = "/login", method = RequestMethod.POST)

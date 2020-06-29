@@ -22,19 +22,19 @@
             <div class="sections">
                 <h3> Browse </h3>
                 <ul>
-                    <li class="active" th:class="${activeUri=='home'?'active':''}"><a href="home.html">
+                    <li class="active" th:class="${activeUri=='home'?'active':''}"><a th:href="@{/views/video/toHome/1273857412729692122}">
                         <i class="uil-home-alt"></i><span> 主页
                     </span> </a></li>
                     <li th:class="${activeUri=='subscribe'?'active':''}"><a href="browse-channals.html">
                         <i class="uil-users-alt"></i> <span> 我的订阅 </span> </a></li>
-                    <li th:class="${activeUri=='watchlater'?'active':''}"><a href="your-watch-later.html"> <i
-                            class="uil-clock"></i> <span> 稍后再看 </span> </a></li>
+                    <!--<li th:class="${activeUri=='watchlater'?'active':''}"><a href="your-watch-later.html"> <i
+                            class="uil-clock"></i> <span> 稍后再看 </span> </a></li>-->
                     <li th:class="${activeUri=='like'?'active':''}"><a href="your-laked-videos.html"> <i
                             class="uil-thumbs-up"></i> <span> 我的喜欢 </span>
                     </a></li>
                     <li th:class="${activeUri=='catagroies'?'active':''}"><a href="browse-catagroies.html"> <i class="uil-layers"></i> <span> 菜单分类</span> </a></li>
-                    <li th:class="${activeUri=='history'?'active':''}"><a href="your-history.html"> <i
-                            class="uil-history"></i> <span> 历史观看 </span> </a></li>
+                    <!--<li th:class="${activeUri=='history'?'active':''}"><a href="your-history.html"> <i
+                            class="uil-history"></i> <span> 历史观看 </span> </a></li>-->
                 </ul>
             </div>
 
@@ -42,7 +42,8 @@
             <div class="sections">
                 <h3> 我的订阅 </h3>
                 <ul>
-                    <li th:each="subscribe,itemStat : ${subscribes}" th:if="${itemStat.count < 5}"><a href="single-channal.html"><img src=${subscribe.avatar} alt="">
+                    <li th:each="subscribe,itemStat : ${subscribes}" th:if="${itemStat.count < 5}"><a
+                            href="single-channal.html"><img th:src=${subscribe.avatar} alt="">
                         <span th:text=" ${subscribe.name}"></span> <span class="dot-notiv"></span></a> </li>
                 </ul>
 
@@ -121,8 +122,8 @@
 
         <!-- Logo-->
         <div id="logo">
-            <a href="#"> <img src="assets/images/logo.png" alt=""></a>
-            <a href="#"> <img src="assets/images/logo-light.png" class="logo-inverse" alt=""></a>
+            <a href="#"> <img th:src="@{/assets/images/logo.png}" alt=""></a>
+            <a href="#"> <img th:src="@{/assets/images/logo-light.png}" class="logo-inverse" alt=""></a>
         </div>
 
         <!-- form search-->
@@ -512,8 +513,6 @@
                             <img th:src="${user.avatar}" alt="">
                         </div>
                         <div class="dropdown-user-name"><span th:text="${user.nickname}"></span>
-                             <span> verified <i class="uil-check"></i>
-                                </span>
                         </div>
                     </div>
 

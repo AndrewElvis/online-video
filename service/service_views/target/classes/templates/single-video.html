@@ -20,7 +20,6 @@
     <script th:src="@{/assets/js/main.js}"></script>
 
     <script th:src="@{/assets/js/axios.min.js}"></script>
-    <script th:src="@{/assets/js/test.js}"></script>
     <!-- 引入样式 -->
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     <!-- 引入组件库 -->
@@ -80,28 +79,28 @@
 
                             <!-- video title -->
                             <div class="video-info-title">
-                                <h1> Course developed by Mike Dane. Check out his YouTube channel for more great
-                                    programming </h1>
+                                <h1 th:text="${video.title}"> Course developed by Mike Dane. Check out his YouTube
+                                    channel for more great programming </h1>
                             </div>
 
                             <div class="uk-flex uk-flex-between">
 
                                 <div class="video-info-details">
-                                    <span>60,723,169 views </span>
+                                    <span>播放数</span> <span th:text="${video.count}">60,723,169 views </span>
                                 </div>
                                 <div class="video-likes">
                                     <div class="like-btn" uk-tooltip="I like it">
                                         <i class="uil-thumbs-up"></i>
-                                        <span class="likes">21</span>
+                                        <span class="likes" th:text="${video.likes}">21</span>
                                     </div>
-                                    <div class="video-info-element">
+                                    <!--<div class="video-info-element">
                                         <div class="views-bar"></div>
                                         <div class="views-bar blue" style="width: 40%"></div>
                                     </div>
                                     <div class="like-btn" uk-tooltip="I Hate it">
                                         <i class="uil-thumbs-down"></i>
                                         <span class="likes">14</span>
-                                    </div>
+                                    </div>-->
                                 </div>
 
                             </div>
@@ -111,10 +110,12 @@
                                 <div class="user-details-card uk-width-expand">
                                     <a href="single-channal.html" class="uk-flex">
                                         <div class="user-details-card-avatar">
-                                            <img th:src="@{/assets/images/avatars/avatar-2.jpg}" alt="">
+                                            <img th:src="${user.avatar}" alt="">
                                         </div>
                                         <div class="user-details-card-name">
-                                            Stella Johnson <span> Published on Oct 22, 2017 </span>
+                                            <span th:text="${user.nickname}"></span> <span th:text="${user.gmtCreate}">
+                                            Published on Oct 22, 2017
+                                        </span>
                                         </div>
                                     </a>
                                 </div>
@@ -123,7 +124,7 @@
 
                                     <div class="btn-subscribe">
                                         <a href="#" class="button primary"> <i class="icon-feather-plus"></i>
-                                            subscribe </a>
+                                            订阅 </a>
                                         <span class="subs-amount">1200</span>
                                     </div>
 
@@ -133,18 +134,17 @@
                             <hr class="mt-0 mb-2">
 
 
-                            <h3> Description</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod
+                            <h3> 视频简介</h3>
+                            <p th:text="${video.intro}">Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod
                                 tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                                nostrud
-                                exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat.</p>
+                                nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat.</p>
 
                         </div>
 
                         <hr>
 
                         <div class="comments mt-4">
-                            <h3> Comments <span class="comments-amount">5210</span> </h3>
+                            <h3> 评论 <span class="comments-amount">3</span> </h3>
 
                             <ul>
                                 <li>
@@ -206,7 +206,7 @@
 
                                 </li>
 
-                                <li>
+                                <!--<li>
                                     <div class="avatar"><img th:src="@{/assets/images/avatars/avatar-4.jpg}" alt="">
                                     </div>
                                     <div class="comment-content">
@@ -224,35 +224,35 @@
                                             assum. Lorem ipsum dolor sit amet</p>
                                     </div>
 
-                                </li>
+                                </li>-->
 
                             </ul>
 
                         </div>
 
                         <div class="comments">
-                            <h4>Your Comment </h4>
+                            <h4>添加评论 </h4>
                             <ul>
                                 <li>
-                                    <div class="avatar"><img th:src="@{/assets/images/avatars/avatar-2.jpg}" alt="">
+                                    <div class="avatar"><img src="https://aliyun-oss-xyt.oss-cn-hangzhou.aliyuncs.com/1.JPG" alt="">
                                     </div>
                                     <div class="comment-content">
                                         <form class="uk-grid-small" uk-grid>
                                             <div class="uk-width-1-2@s">
-                                                <label class="uk-form-label">Name</label>
-                                                <input class="uk-input" type="text" placeholder="Name">
+                                                <label class="uk-form-label">名称</label>
+                                                <input class="uk-input" type="text" placeholder="名称">
                                             </div>
                                             <div class="uk-width-1-2@s">
                                                 <label class="uk-form-label">Email</label>
                                                 <input class="uk-input" type="text" placeholder="Email">
                                             </div>
                                             <div class="uk-width-1-1@s">
-                                                <label class="uk-form-label">Comment</label>
-                                                <textarea class="uk-textarea" placeholder="Enter Your Comments her..."
+                                                <label class="uk-form-label">评论</label>
+                                                <textarea class="uk-textarea" placeholder="请输入你的评论"
                                                     style=" height:160px"></textarea>
                                             </div>
                                             <div class="uk-grid-margin">
-                                                <input type="submit" value="submit" class="button primary">
+                                                <input type="submit" value="提交" class="button primary">
                                             </div>
                                         </form>
 
@@ -269,18 +269,18 @@
                     <div class="uk-width-expand@m">
 
                         <div class="uk-flex uk-flex-middle uk-flex-between px-1 pb-3">
-                            <p class="mb-0 uk-h5"> Upnext </p>
+                            <p class="mb-0 uk-h5"> 推荐 </p>
 
-                            <label class="btn-switch">
+                            <!--<label class="btn-switch">
                                 <input type="checkbox">
                                 <span class="btn-switch-slider" uk-toggle="target: #wrapper; cls: menu-small"></span>
-                            </label>
+                            </label>-->
 
                         </div>
                         <div class="video-list-small uk-child-width-1-1@m uk-child-width-1-2@s" uk-grid>
 
 
-                            <div>
+                            <div th:each="video : ${videoList}">
                                 <a href="#" class="video-post video-post-list">
                                     <!-- Blog Post Thumbnail -->
                                     <div class="video-post-thumbnail">
@@ -288,17 +288,18 @@
                                         <span class="video-post-time">23:00</span>
                                         <span class="play-btn-trigger"></span>
 
-                                        <img th:src="@{/assets/images/video-thumbal/2.png}" alt="">
+                                        <img th:src="${video.cover}" alt="">
 
                                     </div>
 
                                     <!-- Blog Post Content -->
                                     <div class="video-post-content">
-                                        <h3> How to create a basic Sticky HTML element .. </h3>
-                                        <img th:src="@{/assets/images/avatars/avatar-3.jpg}" alt="">
-                                        <span class="video-post-user">Jonathan Madano</span>
-                                        <span class="video-post-views">531k views</span>
-                                        <span class="video-post-date"> 2 weeks ago </span>
+                                        <h3 th:text="${video.title}"> How to create a basic Sticky HTML element .. </h3>
+                                        <img th:src="${video.userAvatar}" alt="">
+                                        <span class="video-post-user" th:text="${video.userNickName}">Jonathan Madano</span>
+                                        <span>播放数</span> <span class="video-post-views" th:text="${video.count}">531k
+                                        views</span><br/>
+                                        <span>上传时间</span> <span class="video-post-date" th:text="${video.gmtCreate}">2 weeks ago</span>
                                         <!-- option menu -->
                                         <span class="btn-option">
                                             <i class="icon-feather-more-vertical"></i>
@@ -306,243 +307,9 @@
                                         <div class="dropdown-option-nav"
                                             uk-dropdown="pos: bottom-right ;mode : hover ;animation: uk-animation-slide-bottom-small">
                                             <ul>
-                                                <li> <span> <i class="uil-history"></i> Watch Later</span> </li>
-                                                <li> <span> <i class="uil-bookmark"></i> Add Bookmark</span> </li>
-                                                <li> <span> <i class="uil-share-alt"></i> Share Your Friends</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div>
-                                <a href="#" class="video-post video-post-list">
-                                    <!-- Blog Post Thumbnail -->
-                                    <div class="video-post-thumbnail">
-                                        <span class="video-post-count">2.7k</span>
-                                        <span class="video-post-time">40:00</span>
-                                        <span class="play-btn-trigger"></span>
-                                        <img th:src="@{/assets/images/video-thumbal/1.png}" alt="">
-                                    </div>
-                                    <!-- Blog Post Content -->
-                                    <div class="video-post-content">
-                                        <h3> Learn how to create a PHP singleton class </h3>
-                                        <img th:src="@{/assets/images/avatars/avatar-2.jpg}" alt="">
-                                        <span class="video-post-user">Stella Johnson</span>
-                                        <span class="video-post-views">938k views</span>
-                                        <span class="video-post-date"> 3 weeks ago </span>
-                                        <!-- option menu -->
-                                        <span class="btn-option">
-                                            <i class="icon-feather-more-vertical"></i>
-                                        </span>
-                                        <div class="dropdown-option-nav"
-                                            uk-dropdown="pos: bottom-right ;mode : hover ;animation: uk-animation-slide-bottom-small">
-                                            <ul>
-                                                <li> <span> <i class="uil-history"></i> Watch Later</span> </li>
-                                                <li> <span> <i class="uil-bookmark"></i> Add Bookmark</span> </li>
-                                                <li> <span> <i class="uil-share-alt"></i> Share Your Friends</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div>
-                                <a href="#" class="video-post video-post-list">
-                                    <!-- Blog Post Thumbnail -->
-                                    <div class="video-post-thumbnail">
-                                        <span class="video-post-count">2.3M</span>
-                                        <span class="video-post-time">14:00</span>
-                                        <span class="play-btn-trigger"></span>
-                                        <img th:src="@{/assets/images/video-thumbal/3.png}" alt="">
-                                    </div>
-                                    <!-- Blog Post Content -->
-                                    <div class="video-post-content">
-                                        <h3> Learn how to Create Laravel Package and .. </h3>
-                                        <img th:src="@{/assets/images/avatars/avatar-5.jpg}" alt="">
-                                        <span class="video-post-user">Alex Dolgove</span>
-                                        <span class="video-post-views">531k views</span>
-                                        <span class="video-post-date"> 2 weeks ago </span>
-                                        <!-- option menu -->
-                                        <span class="btn-option">
-                                            <i class="icon-feather-more-vertical"></i>
-                                        </span>
-                                        <div class="dropdown-option-nav"
-                                            uk-dropdown="pos: bottom-right ;mode : hover ;animation: uk-animation-slide-bottom-small">
-                                            <ul>
-                                                <li> <span> <i class="uil-history"></i> Watch Later</span> </li>
-                                                <li> <span> <i class="uil-bookmark"></i> Add Bookmark</span> </li>
-                                                <li> <span> <i class="uil-share-alt"></i> Share Your Friends</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div>
-                                <a href="#" class="video-post video-post-list">
-                                    <!-- Blog Post Thumbnail -->
-                                    <div class="video-post-thumbnail">
-                                        <span class="video-post-count">1.4M</span>
-                                        <span class="video-post-time">23:00</span>
-                                        <span class="play-btn-trigger"></span>
-                                        <img th:src="@{/assets/images/video-thumbal/4.png}" alt="">
-                                    </div>
-                                    <!-- Blog Post Content -->
-                                    <div class="video-post-content">
-                                        <h3> Learn how to upload files using Laravel and .. </h3>
-                                        <img th:src="@{/assets/images/avatars/avatar-4.jpg}" alt="">
-                                        <span class="video-post-user">Adrian Mohani</span>
-                                        <span class="video-post-views">531k views</span>
-                                        <span class="video-post-date"> 2 weeks ago </span>
-                                        <!-- option menu -->
-                                        <span class="btn-option">
-                                            <i class="icon-feather-more-vertical"></i>
-                                        </span>
-                                        <div class="dropdown-option-nav"
-                                            uk-dropdown="pos: bottom-right ;mode : hover ;animation: uk-animation-slide-bottom-small">
-                                            <ul>
-                                                <li> <span> <i class="uil-history"></i> Watch Later</span> </li>
-                                                <li> <span> <i class="uil-bookmark"></i> Add Bookmark</span> </li>
-                                                <li> <span> <i class="uil-share-alt"></i> Share Your Friends</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-
-
-                            <div>
-                                <a href="#" class="video-post video-post-list">
-                                    <!-- Blog Post Thumbnail -->
-                                    <div class="video-post-thumbnail">
-                                        <span class="video-post-count">1.4M</span>
-                                        <span class="video-post-time">23:00</span>
-                                        <span class="play-btn-trigger"></span>
-                                        <img th:src="@{/assets/images/video-thumbal/img-1.png}" alt="">
-                                    </div>
-
-                                    <!-- Blog Post Content -->
-                                    <div class="video-post-content">
-                                        <h3> Learn How-To Design & Prototype in Adobe XD Tutorial </h3>
-                                        <img th:src="@{/assets/images/avatars/avatar-3.jpg}" alt="">
-                                        <span class="video-post-user">Jonathan Madano</span>
-                                        <span class="video-post-views">531k views</span>
-                                        <span class="video-post-date"> 2 weeks ago </span>
-                                        <!-- option menu -->
-                                        <span class="btn-option">
-                                            <i class="icon-feather-more-vertical"></i>
-                                        </span>
-                                        <div class="dropdown-option-nav"
-                                            uk-dropdown="pos: bottom-right ;mode : hover ;animation: uk-animation-slide-bottom-small">
-                                            <ul>
-                                                <li> <span> <i class="uil-history"></i> Watch Later</span> </li>
-                                                <li> <span> <i class="uil-bookmark"></i> Add Bookmark</span> </li>
-                                                <li> <span> <i class="uil-share-alt"></i> Share Your Friends</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div>
-                                <a href="#" class="video-post video-post-list">
-                                    <!-- Blog Post Thumbnail -->
-                                    <div class="video-post-thumbnail">
-                                        <span class="video-post-count">2.7k</span>
-                                        <span class="video-post-time">40:00</span>
-                                        <span class="play-btn-trigger"></span>
-                                        <img th:src="@{/assets/images/video-thumbal/img-3.png}" alt="">
-                                    </div>
-                                    <!-- Blog Post Content -->
-                                    <div class="video-post-content">
-                                        <h3> Learn How to Prototype Faster with Mockplus! in 2020 </h3>
-                                        <img th:src="@{/assets/images/avatars/avatar-2.jpg}" alt="">
-                                        <span class="video-post-user">Stella Johnson</span>
-                                        <span class="video-post-views">938k views</span>
-                                        <span class="video-post-date"> 3 weeks ago </span>
-                                        <!-- option menu -->
-                                        <span class="btn-option">
-                                            <i class="icon-feather-more-vertical"></i>
-                                        </span>
-                                        <div class="dropdown-option-nav"
-                                            uk-dropdown="pos: bottom-right ;mode : hover ;animation: uk-animation-slide-bottom-small">
-                                            <ul>
-                                                <li> <span> <i class="uil-history"></i> Watch Later</span> </li>
-                                                <li> <span> <i class="uil-bookmark"></i> Add Bookmark</span> </li>
-                                                <li> <span> <i class="uil-share-alt"></i> Share Your Friends</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div>
-                                <a href="#" class="video-post video-post-list">
-                                    <!-- Blog Post Thumbnail -->
-                                    <div class="video-post-thumbnail">
-                                        <span class="video-post-count">2.3M</span>
-                                        <span class="video-post-time">14:00</span>
-                                        <span class="play-btn-trigger"></span>
-                                        <img th:src="@{/assets/images/video-thumbal/img-4.png}" alt="">
-                                    </div>
-                                    <!-- Blog Post Content -->
-                                    <div class="video-post-content">
-                                        <h3> Adobe XD Design Tutorial Website Landing Page </h3>
-                                        <img th:src="@{/assets/images/avatars/avatar-5.jpg}" alt="">
-                                        <span class="video-post-user">Alex Dolgove</span>
-                                        <span class="video-post-views">531k views</span>
-                                        <span class="video-post-date"> 2 weeks ago </span>
-                                        <!-- option menu -->
-                                        <span class="btn-option">
-                                            <i class="icon-feather-more-vertical"></i>
-                                        </span>
-                                        <div class="dropdown-option-nav"
-                                            uk-dropdown="pos: bottom-right ;mode : hover ;animation: uk-animation-slide-bottom-small">
-                                            <ul>
-                                                <li> <span> <i class="uil-history"></i> Watch Later</span> </li>
-                                                <li> <span> <i class="uil-bookmark"></i> Add Bookmark</span> </li>
-                                                <li> <span> <i class="uil-share-alt"></i> Share Your Friends</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div>
-                                <a href="#" class="video-post video-post-list">
-                                    <!-- Blog Post Thumbnail -->
-                                    <div class="video-post-thumbnail">
-                                        <span class="video-post-count">1.4M</span>
-                                        <span class="video-post-time">23:00</span>
-                                        <span class="play-btn-trigger"></span>
-                                        <img th:src="@{/assets/images/video-thumbal/img-5.png}" alt="">
-                                    </div>
-                                    <!-- Blog Post Content -->
-                                    <div class="video-post-content">
-                                        <h3> Learn UI/UX Designing Latest Website In Adobe XD </h3>
-                                        <img th:src="@{/assets/images/avatars/avatar-4.jpg}" alt="">
-                                        <span class="video-post-user">Adrian Mohani</span>
-                                        <span class="video-post-views">531k views</span>
-                                        <span class="video-post-date"> 2 weeks ago </span>
-
-                                        <!-- option menu -->
-                                        <span class="btn-option">
-                                            <i class="icon-feather-more-vertical"></i>
-                                        </span>
-                                        <div class="dropdown-option-nav"
-                                            uk-dropdown="pos: bottom-right ;mode : hover ;animation: uk-animation-slide-bottom-small">
-                                            <ul>
-                                                <li> <span> <i class="uil-history"></i> Watch Later</span> </li>
-                                                <li> <span> <i class="uil-bookmark"></i> Add Bookmark</span> </li>
-                                                <li> <span> <i class="uil-share-alt"></i> Share Your Friends</span>
+                                                <li> <span> <i class="uil-history"></i> 稍后观看</span> </li>
+                                                <li> <span> <i class="uil-bookmark"></i> 加入收藏</span> </li>
+                                                <li> <span> <i class="uil-share-alt"></i> 分享</span>
                                                 </li>
                                             </ul>
                                         </div>

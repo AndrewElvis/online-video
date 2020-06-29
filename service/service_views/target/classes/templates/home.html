@@ -536,7 +536,7 @@
 
                 <!-- find channals  header -->
 
-                <div class="section-header mt-5">
+                <!--<div class="section-header mt-5">
                     <div class="section-header-left">
                         <h4> Find Channals</h4>
                         <p> Channals Your Friends are in . </p>
@@ -544,10 +544,10 @@
                     <div class="section-header-right">
                         <a th:href="@{/browse-channals.html}" class="see-all"> See all</a>
                     </div>
-                </div>
+                </div>-->
 
                 <!-- find channals -->
-                <div class="uk-child-width-1-2@m" uk-grid>
+                <!--<div class="uk-child-width-1-2@m" uk-grid>
                     <div>
 
                         <div class="uk-grid-small" uk-grid>
@@ -634,7 +634,7 @@
 
 
                     </div>
-                </div>
+                </div>-->
 
                 <!-- footer
                ================================================== -->
@@ -666,46 +666,6 @@
 
 </body>
 
-<!--<script>
-    new Vue({
-        el: '#app',
-        data: function() {
-            return {
-                options: [{
-                    value: 'HTML',
-                    label: 'HTML'
-                }, {
-                    value: 'CSS',
-                    label: 'CSS'
-                }, {
-                    value: 'JavaScript',
-                    label: 'JavaScript'
-                }],
-                value: [],
-                fileList: [{
-                    name: 'food.jpeg',
-                    url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'
-                }, {
-                    name: 'food2.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'
-                }]
-            }
-        },
-        methods: {
-            handleRemove(file, fileList) {
-                console.log(file, fileList);
-            },
-            handlePreview(file) {
-                console.log(file);
-            },
-            handleExceed(files, fileList) {
-                this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
-            },
-            beforeRemove(file, fileList) {
-                return this.$confirm(`确定移除 ${ file.name }？`);
-            }
-        }
-    })
-</script>-->
 <script>
     new Vue({
         el: '#app',

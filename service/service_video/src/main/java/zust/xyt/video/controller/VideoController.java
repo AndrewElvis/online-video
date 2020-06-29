@@ -58,6 +58,14 @@ public class VideoController {
         return ResponseResult.ok().data("video", video);
     }
 
+    @GetMapping("/getBySourceId/{id}")
+    public Video getBySourceId(@PathVariable String id) {
+        QueryWrapper<Video> wrapper = new QueryWrapper<>();
+        wrapper.eq("source_id", id);
+        Video video = (Video) videoService.getObj(wrapper);
+        return video;
+    }
+
     //更新视频信息
     @ApiOperation(value = "根据ID修改视频信息")
     @PutMapping("/{id}")
