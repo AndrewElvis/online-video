@@ -498,7 +498,7 @@
 
 
             <!-- profile -image -->
-            <a class="opts_account"> <img src="assets/images/avatars/avatar-1.jpg" alt=""></a>
+            <a class="opts_account"> <img th:src="${user.avatar}" alt=""></a>
 
             <!-- profile dropdown-->
             <div uk-dropdown="pos: top-right;mode:click ; animation: uk-animation-slide-bottom-small"
@@ -507,12 +507,12 @@
                 <!-- User Name / Avatar -->
                 <a href="#">
 
-                    <div class="dropdown-user-details">
+                    <div  class="dropdown-user-details">
                         <div class="dropdown-user-avatar">
-                            <img src="assets/images/avatars/avatar-1.jpg" alt="">
+                            <img th:src="${user.avatar}" alt="">
                         </div>
-                        <div class="dropdown-user-name">
-                            <!--Richard Ali--> <span> verified <i class="uil-check"></i>
+                        <div class="dropdown-user-name"><span th:text="${user.nickname}"></span>
+                             <span> verified <i class="uil-check"></i>
                                 </span>
                         </div>
                     </div>
@@ -531,6 +531,7 @@
                         <li><a href="#"> <i class="icon-feather-log-out"></i> 注销</a>
                         </li>
                     </div>
+
                 </ul>
 
 

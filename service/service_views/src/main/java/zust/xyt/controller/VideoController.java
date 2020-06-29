@@ -32,6 +32,8 @@ public class VideoController {
     public String singleVideo(@PathVariable String id, Model model) {
         ResponseResult res = restTemplate.getForObject("http://SERVICE-VIDEO/vod/getPlayUrl/" + id,
                 ResponseResult.class);
+        User me = restTemplate.getForObject("http://SERVICE-USER/user/" + "1273855936364044290", User.class);
+        model.addAttribute("user",me);
         model.addAttribute("url", res.getData().get("url"));
         return "single-video";
     }
@@ -41,6 +43,8 @@ public class VideoController {
         List<LinkedHashMap> result = restTemplate.getForObject("http://SERVICE-VIDEO/video", List.class);
         ArrayList users = restTemplate.getForObject("http://SERVICE-USER/user/subscribe/" + id, ArrayList.class);
         ArrayList findChannals = restTemplate.getForObject("http://SERVICE-USER/user/findChannals/" + id, ArrayList.class);
+        User me = restTemplate.getForObject("http://SERVICE-USER/user/" + id, User.class);
+        model.addAttribute("user",me);
         model.addAttribute("findChannals",findChannals);
         model.addAttribute("subscribes",users);
         for (LinkedHashMap video : result) {
