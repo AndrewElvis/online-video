@@ -10,10 +10,11 @@ import org.springframework.web.client.RestTemplate;
 import zust.xyt.ResponseResult;
 import zust.xyt.entity.User;
 import zust.xyt.entity.Video;
+import zust.xyt.entity.vo.subVideoVo;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * @author AndrewElvis
@@ -28,22 +29,53 @@ public class ChannelController {
     RestTemplate restTemplate;
 
     @GetMapping("/{id}")
-    public String toSingleChannel(@PathVariable String id, Model model, String userId) {
+    public String toSingleChannel(@PathVariable String id, Model model) {
         User user = restTemplate.getForObject("http://SERVICE-USER/user/" + id, User.class);
         List<LinkedHashMap> videoList = restTemplate.getForObject("http://SERVICE-VIDEO/video/getByUserId/" + id, List.class);
         Video video = restTemplate.getForObject("http://SERVICE-VIDEO/video/getMostCountVideoByUserId/" + id,
                 Video.class);
-        User me = restTemplate.getForObject("http://SERVICE-USER/user/" + userId, User.class);
-        ArrayList users = restTemplate.getForObject("http://SERVICE-USER/user/subscribe/" + id, ArrayList.class);
+        User me = restTemplate.getForObject("http://SERVICE-USER/user/" + id, User.class);
+        ArrayList subs = restTemplate.getForObject("http://SERVICE-USER/user/subscribe/" + id, ArrayList.class);
         ResponseResult res = restTemplate.getForObject("http://SERVICE-VIDEO/vod/getPlayUrl/" + video.getSourceId(),
                 ResponseResult.class);
+
+        Iterator iterator = subs.iterator();
+        List<subVideoVo> subVideos = new ArrayList<>();
+        while (iterator.hasNext()){
+            LinkedHashMap next = (LinkedHashMap) iterator.next();
+            List<LinkedHashMap> subVideo = restTemplate.getForObject("http://SERVICE-VIDEO/video/getByUserId/" + next.get("id"), List.class);
+            User subscribe = restTemplate.getForObject("http://SERVICE-USER/user/" + next.get("id"), User.class);
+            for (LinkedHashMap subvideo : subVideo) {
+                subVideoVo subVideoVo = new subVideoVo();
+                subVideoVo.setTitle((String) subvideo.get("title"));
+                subVideoVo.setSourceId((String) subvideo.get("sourceId"));
+                subVideoVo.setCount((String) subvideo.get("count"));
+                subVideoVo.setCover((String) subvideo.get("cover"));
+                subVideoVo.setGmtCreate((String) subvideo.get("gmtCreate"));
+                subVideoVo.setUserAvatar(subscribe.getAvatar());
+                subVideoVo.setUserNickName(subscribe.getNickname());
+                subVideos.add(subVideoVo);
+            }
+        }
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yy-MM-dd");
+        if (subVideos != null){
+            subVideos.sort(Comparator.comparingLong(a -> {
+                try {
+                    return (simpleDateFormat.parse(a.getGmtCreate())).getTime();
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                return 0;
+            }));
+        }
+
         for (LinkedHashMap v : videoList) {
             System.out.println(v.get("userId"));
             User u = restTemplate.getForObject("http://SERVICE-USER/user/" + v.get("userId"), User.class);
             v.put("userNickName", u.getNickname());
             v.put("userAvatar", u.getAvatar());
         }
-        model.addAttribute("subscribes",users);
+        model.addAttribute("subscribes",subs);
         model.addAttribute("user",me);
         model.addAttribute("channelUser", user);
         model.addAttribute("channelVideoList", videoList);
