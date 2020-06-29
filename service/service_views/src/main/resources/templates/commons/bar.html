@@ -25,12 +25,12 @@
                     <li class="active" th:class="${activeUri=='home'?'active':''}"><a th:href="@{/views/video/toHome/1273857412729692122}">
                         <i class="uil-home-alt"></i><span> 主页
                     </span> </a></li>
-                    <li th:class="${activeUri=='subscribe'?'active':''}"><a th:href="@{/views/video/toChannals/1273857412729692122}">
-                        <i class="uil-users-alt"></i> <span> 排行榜 </span> </a></li>
+                    <li th:class="${activeUri=='subscribe'?'active':''}"><a href="browse-channals.html">
+                        <i class="uil-users-alt"></i> <span> 我的订阅 </span> </a></li>
                     <!--<li th:class="${activeUri=='watchlater'?'active':''}"><a href="your-watch-later.html"> <i
                             class="uil-clock"></i> <span> 稍后再看 </span> </a></li>-->
-                    <li th:class="${activeUri=='like'?'active':''}"><a th:href="@{/views/channel/1273857412729692122}"> <i
-                            class="uil-thumbs-up"></i> <span> 我的主页 </span>
+                    <li th:class="${activeUri=='like'?'active':''}"><a href="your-laked-videos.html"> <i
+                            class="uil-thumbs-up"></i> <span> 我的喜欢 </span>
                     </a></li>
                     <li th:class="${activeUri=='catagroies'?'active':''}"><a href="browse-catagroies.html"> <i class="uil-layers"></i> <span> 菜单分类</span> </a></li>
                     <!--<li th:class="${activeUri=='history'?'active':''}"><a href="your-history.html"> <i
@@ -208,18 +208,18 @@
             <!-- videos feed  offcanvas-->
             <div id="video" uk-offcanvas="overlay: true ;flip: true">
                 <div class="uk-offcanvas-bar uk-width-large">
-                    "
+
                     <h3> 你的订阅 </h3>
                     <hr class="mb-3" style="margin:0 -20px">
                     <button class="uk-offcanvas-close" type="button" uk-close></button>
 
                     <div class="video-list-small uk-child-width-1-1" uk-grid>
 
-                        <div th:each="subVideo,itemStat : ${subVideos}" th:if="${itemStat.count < 6}">
-                            <a th:href="@{'/views/video/' + ${subVideo.sourceId} }" class="video-post video-post-list">
+                        <div>
+                            <a href="single-video.html" class="video-post video-post-list">
                                 <!-- Blog Post Thumbnail -->
                                 <div class="video-post-thumbnail">
-                                    <span cl    ass="video-post-count" th:text="${subVideo.count}"></span>
+                                    <span class="video-post-count">1.4M</span>
                                     <span class="video-post-time">23:00</span>
                                     <span class="play-btn-trigger"></span>
 
@@ -229,273 +229,273 @@
 
                                 <!-- Blog Post Content -->
                                 <div class="video-post-content">
-                                    <h3 th:text="${subVideo.title}"></h3>
-                                    <img th:src="${subVideo.userAvatar}" alt="">
-                                    <span class="video-post-user" th:text="${subVideo.userNickName}"></span>
-                                    <span class="video-post-views" th:text="${subVideo.count} + 播放"></span>
-                                    <span class="video-post-date" th:text="${subVideo.gmtCreate}"></span>
+                                    <h3> How to create a basic Sticky HTML element..</h3>
+                                    <img src="assets/images/avatars/avatar-3.jpg" alt="">
+                                    <span class="video-post-user">Jonathan Madano</span>
+                                    <span class="video-post-views">531k views</span>
+                                    <span class="video-post-date"> 2 weeks ago </span>
                                 </div>
                             </a>
                         </div>
 
-                        <!--                        <div>-->
-                        <!--                            <a href="single-video.html" class="video-post video-post-list">-->
-                        <!--                                &lt;!&ndash; Blog Post Thumbnail &ndash;&gt;-->
-                        <!--                                <div class="video-post-thumbnail">-->
-                        <!--                                    <span class="video-post-count">2.7k</span>-->
-                        <!--                                    <span class="video-post-time">40:00</span>-->
-                        <!--                                    <span class="play-btn-trigger"></span>-->
-                        <!--                                    <img src="assets/images/video-thumbal/1.png" alt="">-->
-                        <!--                                </div>-->
-                        <!--                                &lt;!&ndash; Blog Post Content &ndash;&gt;-->
-                        <!--                                <div class="video-post-content">-->
-                        <!--                                    <h3> Learn how to create PHP singleton class </h3>-->
-                        <!--                                    <img src="assets/images/avatars/avatar-2.jpg" alt="">-->
-                        <!--                                    <span class="video-post-user">Stella Johnson</span>-->
-                        <!--                                    <span class="video-post-views">938k views</span>-->
-                        <!--                                    <span class="video-post-date"> 3 weeks ago </span>-->
-                        <!--                                </div>-->
-                        <!--                            </a>-->
-                        <!--                        </div>-->
+                        <div>
+                            <a href="single-video.html" class="video-post video-post-list">
+                                <!-- Blog Post Thumbnail -->
+                                <div class="video-post-thumbnail">
+                                    <span class="video-post-count">2.7k</span>
+                                    <span class="video-post-time">40:00</span>
+                                    <span class="play-btn-trigger"></span>
+                                    <img src="assets/images/video-thumbal/1.png" alt="">
+                                </div>
+                                <!-- Blog Post Content -->
+                                <div class="video-post-content">
+                                    <h3> Learn how to create PHP singleton class </h3>
+                                    <img src="assets/images/avatars/avatar-2.jpg" alt="">
+                                    <span class="video-post-user">Stella Johnson</span>
+                                    <span class="video-post-views">938k views</span>
+                                    <span class="video-post-date"> 3 weeks ago </span>
+                                </div>
+                            </a>
+                        </div>
 
-                        <!--                        <div>-->
-                        <!--                            <a href="single-video.html" class="video-post video-post-list">-->
-                        <!--                                &lt;!&ndash; Blog Post Thumbnail &ndash;&gt;-->
-                        <!--                                <div class="video-post-thumbnail">-->
-                        <!--                                    <span class="video-post-count">2.3M</span>-->
-                        <!--                                    <span class="video-post-time">14:00</span>-->
-                        <!--                                    <span class="play-btn-trigger"></span>-->
-                        <!--                                    <img src="assets/images/video-thumbal/3.png" alt="">-->
-                        <!--                                </div>-->
-                        <!--                                &lt;!&ndash; Blog Post Content &ndash;&gt;-->
-                        <!--                                <div class="video-post-content">-->
-                        <!--                                    <h3> Learn Creating Laravel Package Initializing ... </h3>-->
-                        <!--                                    <img src="assets/images/avatars/avatar-5.jpg" alt="">-->
-                        <!--                                    <span class="video-post-user">Alex Dolgove</span>-->
-                        <!--                                    <span class="video-post-views">531k views</span>-->
-                        <!--                                    <span class="video-post-date"> 2 weeks ago </span>-->
-                        <!--                                </div>-->
-                        <!--                            </a>-->
-                        <!--                        </div>-->
+                        <div>
+                            <a href="single-video.html" class="video-post video-post-list">
+                                <!-- Blog Post Thumbnail -->
+                                <div class="video-post-thumbnail">
+                                    <span class="video-post-count">2.3M</span>
+                                    <span class="video-post-time">14:00</span>
+                                    <span class="play-btn-trigger"></span>
+                                    <img src="assets/images/video-thumbal/3.png" alt="">
+                                </div>
+                                <!-- Blog Post Content -->
+                                <div class="video-post-content">
+                                    <h3> Learn Creating Laravel Package Initializing ... </h3>
+                                    <img src="assets/images/avatars/avatar-5.jpg" alt="">
+                                    <span class="video-post-user">Alex Dolgove</span>
+                                    <span class="video-post-views">531k views</span>
+                                    <span class="video-post-date"> 2 weeks ago </span>
+                                </div>
+                            </a>
+                        </div>
 
-                        <!--                        <div>-->
-                        <!--                            <a href="single-video.html" class="video-post video-post-list">-->
-                        <!--                                &lt;!&ndash; Blog Post Thumbnail &ndash;&gt;-->
-                        <!--                                <div class="video-post-thumbnail">-->
-                        <!--                                    <span class="video-post-count">1.4M</span>-->
-                        <!--                                    <span class="video-post-time">23:00</span>-->
-                        <!--                                    <span class="play-btn-trigger"></span>-->
-                        <!--                                    <img src="assets/images/video-thumbal/4.png" alt="">-->
-                        <!--                                </div>-->
-                        <!--                                &lt;!&ndash; Blog Post Content &ndash;&gt;-->
-                        <!--                                <div class="video-post-content">-->
-                        <!--                                    <h3> Learn how to upload files using Laravel .. </h3>-->
-                        <!--                                    <img src="assets/images/avatars/avatar-4.jpg" alt="">-->
-                        <!--                                    <span class="video-post-user">Adrian Mohani</span>-->
-                        <!--                                    <span class="video-post-views">531k views</span>-->
-                        <!--                                    <span class="video-post-date"> 2 weeks ago </span>-->
-                        <!--                                </div>-->
-                        <!--                            </a>-->
-                        <!--                        </div>-->
+                        <div>
+                            <a href="single-video.html" class="video-post video-post-list">
+                                <!-- Blog Post Thumbnail -->
+                                <div class="video-post-thumbnail">
+                                    <span class="video-post-count">1.4M</span>
+                                    <span class="video-post-time">23:00</span>
+                                    <span class="play-btn-trigger"></span>
+                                    <img src="assets/images/video-thumbal/4.png" alt="">
+                                </div>
+                                <!-- Blog Post Content -->
+                                <div class="video-post-content">
+                                    <h3> Learn how to upload files using Laravel .. </h3>
+                                    <img src="assets/images/avatars/avatar-4.jpg" alt="">
+                                    <span class="video-post-user">Adrian Mohani</span>
+                                    <span class="video-post-views">531k views</span>
+                                    <span class="video-post-date"> 2 weeks ago </span>
+                                </div>
+                            </a>
+                        </div>
 
-                        <!--                        <div>-->
-                        <!--                            <a href="single-video.html" class="video-post video-post-list">-->
-                        <!--                                &lt;!&ndash; Blog Post Thumbnail &ndash;&gt;-->
-                        <!--                                <div class="video-post-thumbnail">-->
-                        <!--                                    <span class="video-post-count">1.4M</span>-->
-                        <!--                                    <span class="video-post-time">23:00</span>-->
-                        <!--                                    <span class="play-btn-trigger"></span>-->
-                        <!--                                    <img src="assets/images/video-thumbal/2.png" alt="">-->
-                        <!--                                </div>-->
+                        <div>
+                            <a href="single-video.html" class="video-post video-post-list">
+                                <!-- Blog Post Thumbnail -->
+                                <div class="video-post-thumbnail">
+                                    <span class="video-post-count">1.4M</span>
+                                    <span class="video-post-time">23:00</span>
+                                    <span class="play-btn-trigger"></span>
+                                    <img src="assets/images/video-thumbal/2.png" alt="">
+                                </div>
 
-                        <!--                                &lt;!&ndash; Blog Post Content &ndash;&gt;-->
-                        <!--                                <div class="video-post-content">-->
-                        <!--                                    <h3> How to create a basic Sticky HTML element ..</h3>-->
-                        <!--                                    <img src="assets/images/avatars/avatar-3.jpg" alt="">-->
-                        <!--                                    <span class="video-post-user">Jonathan Madano</span>-->
-                        <!--                                    <span class="video-post-views">531k views</span>-->
-                        <!--                                    <span class="video-post-date"> 2 weeks ago </span>-->
-                        <!--                                </div>-->
-                        <!--                            </a>-->
-                        <!--                        </div>-->
+                                <!-- Blog Post Content -->
+                                <div class="video-post-content">
+                                    <h3> How to create a basic Sticky HTML element ..</h3>
+                                    <img src="assets/images/avatars/avatar-3.jpg" alt="">
+                                    <span class="video-post-user">Jonathan Madano</span>
+                                    <span class="video-post-views">531k views</span>
+                                    <span class="video-post-date"> 2 weeks ago </span>
+                                </div>
+                            </a>
+                        </div>
 
-                        <!--                        <div>-->
-                        <!--                            <a href="single-video.html" class="video-post video-post-list">-->
-                        <!--                                &lt;!&ndash; Blog Post Thumbnail &ndash;&gt;-->
-                        <!--                                <div class="video-post-thumbnail">-->
-                        <!--                                    <span class="video-post-count">2.7k</span>-->
-                        <!--                                    <span class="video-post-time">40:00</span>-->
-                        <!--                                    <span class="play-btn-trigger"></span>-->
-                        <!--                                    <img src="assets/images/video-thumbal/1.png" alt="">-->
-                        <!--                                </div>-->
-                        <!--                                &lt;!&ndash; Blog Post Content &ndash;&gt;-->
-                        <!--                                <div class="video-post-content">-->
-                        <!--                                    <h3> Learn how to create PHP singleton class </h3>-->
-                        <!--                                    <img src="assets/images/avatars/avatar-2.jpg" alt="">-->
-                        <!--                                    <span class="video-post-user">Stella Johnson</span>-->
-                        <!--                                    <span class="video-post-views">938k views</span>-->
-                        <!--                                    <span class="video-post-date"> 3 weeks ago </span>-->
-                        <!--                                </div>-->
-                        <!--                            </a>-->
-                        <!--                        </div>-->
+                        <div>
+                            <a href="single-video.html" class="video-post video-post-list">
+                                <!-- Blog Post Thumbnail -->
+                                <div class="video-post-thumbnail">
+                                    <span class="video-post-count">2.7k</span>
+                                    <span class="video-post-time">40:00</span>
+                                    <span class="play-btn-trigger"></span>
+                                    <img src="assets/images/video-thumbal/1.png" alt="">
+                                </div>
+                                <!-- Blog Post Content -->
+                                <div class="video-post-content">
+                                    <h3> Learn how to create PHP singleton class </h3>
+                                    <img src="assets/images/avatars/avatar-2.jpg" alt="">
+                                    <span class="video-post-user">Stella Johnson</span>
+                                    <span class="video-post-views">938k views</span>
+                                    <span class="video-post-date"> 3 weeks ago </span>
+                                </div>
+                            </a>
+                        </div>
 
                     </div>
 
                 </div>
             </div>
 
-            <!--            &lt;!&ndash; Message  notificiation dropdown &ndash;&gt;-->
-            <!--            <a href="#" class="opts_icon"> <i class="uil-envelope-alt"></i> <span>4</span> </a>-->
+            <!-- Message  notificiation dropdown -->
+            <a href="#" class="opts_icon"> <i class="uil-envelope-alt"></i> <span>4</span> </a>
 
-            <!--            &lt;!&ndash; Message  notificiation dropdown &ndash;&gt;-->
-            <!--            <div uk-dropdown="pos: top-right;mode:click ; animation: uk-animation-slide-bottom-small"-->
-            <!--                 class="dropdown-notifications">-->
+            <!-- Message  notificiation dropdown -->
+            <div uk-dropdown="pos: top-right;mode:click ; animation: uk-animation-slide-bottom-small"
+                 class="dropdown-notifications">
 
-            <!--                &lt;!&ndash; notivication header &ndash;&gt;-->
-            <!--                <div class="dropdown-notifications-headline">-->
-            <!--                    <h4>我的信息</h4>-->
-            <!--                    <a href="#">-->
-            <!--                        <i class="icon-feather-settings" uk-tooltip="title: 消息设置 ; pos: left"></i>-->
-            <!--                    </a>-->
-            <!--                </div>-->
+                <!-- notivication header -->
+                <div class="dropdown-notifications-headline">
+                    <h4>我的信息</h4>
+                    <a href="#">
+                        <i class="icon-feather-settings" uk-tooltip="title: 消息设置 ; pos: left"></i>
+                    </a>
+                </div>
 
-            <!--                &lt;!&ndash; notification contents &ndash;&gt;-->
-            <!--                <div class="dropdown-notifications-content" data-simplebar>-->
+                <!-- notification contents -->
+                <div class="dropdown-notifications-content" data-simplebar>
 
-            <!--                    &lt;!&ndash; notiviation list &ndash;&gt;-->
-            <!--                    <ul>-->
-            <!--                        <li class="notifications-not-read">-->
-            <!--                            <a href="#">-->
-            <!--                                        <span class="notification-avatar">-->
-            <!--                                            <img src="assets/images/avatars/avatar-2.jpg" alt="">-->
-            <!--                                        </span>-->
-            <!--                                <div class="notification-text notification-msg-text">-->
-            <!--                                    <strong>Jonathan Madano</strong>-->
-            <!--                                    <p>Okay.. Thanks for The Answer I will be waiting for your...</p>-->
-            <!--                                    <span class="time-ago"> 2 hours ago </span>-->
-            <!--                                </div>-->
-            <!--                            </a>-->
-            <!--                        </li>-->
-            <!--                        <li>-->
-            <!--                            <a href="#">-->
-            <!--                                        <span class="notification-avatar">-->
-            <!--                                            <img src="assets/images/avatars/avatar-3.jpg" alt="">-->
-            <!--                                        </span>-->
-            <!--                                <div class="notification-text notification-msg-text">-->
-            <!--                                    <strong>Stella Johnson</strong>-->
-            <!--                                    <p> Alex will explain you how to keep your videos privatly and all that...-->
-            <!--                                    </p>-->
-            <!--                                    <span class="time-ago"> 7 hours ago </span>-->
-            <!--                                </div>-->
-            <!--                            </a>-->
-            <!--                        </li>-->
-            <!--                        <li>-->
-            <!--                            <a href="#">-->
-            <!--                                        <span class="notification-avatar">-->
-            <!--                                            <img src="assets/images/avatars/avatar-1.jpg" alt="">-->
-            <!--                                        </span>-->
-            <!--                                <div class="notification-text notification-msg-text">-->
-            <!--                                    <strong>Alex Dolgove</strong>-->
-            <!--                                    <p> Alia just joined Messenger! Be the first to send a-->
-            <!--                                        welcome message..</p>-->
-            <!--                                    <span class="time-ago"> 19 hours ago </span>-->
-            <!--                                </div>-->
-            <!--                            </a>-->
-            <!--                        </li>-->
-            <!--                        <li>-->
-            <!--                            <a href="#">-->
-            <!--                                        <span class="notification-avatar">-->
-            <!--                                            <img src="assets/images/avatars/avatar-4.jpg" alt="">-->
-            <!--                                        </span>-->
-            <!--                                <div class="notification-text notification-msg-text">-->
-            <!--                                    <strong>Adrian Mohani</strong>-->
-            <!--                                    <p> Okay.. Thanks for The Answer I will be waiting for your... </p>-->
-            <!--                                    <span class="time-ago"> Yesterday </span>-->
-            <!--                                </div>-->
-            <!--                            </a>-->
-            <!--                        </li>-->
-            <!--                    </ul>-->
+                    <!-- notiviation list -->
+                    <ul>
+                        <li class="notifications-not-read">
+                            <a href="#">
+                                        <span class="notification-avatar">
+                                            <img src="assets/images/avatars/avatar-2.jpg" alt="">
+                                        </span>
+                                <div class="notification-text notification-msg-text">
+                                    <strong>Jonathan Madano</strong>
+                                    <p>Okay.. Thanks for The Answer I will be waiting for your...</p>
+                                    <span class="time-ago"> 2 hours ago </span>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                        <span class="notification-avatar">
+                                            <img src="assets/images/avatars/avatar-3.jpg" alt="">
+                                        </span>
+                                <div class="notification-text notification-msg-text">
+                                    <strong>Stella Johnson</strong>
+                                    <p> Alex will explain you how to keep your videos privatly and all that...
+                                    </p>
+                                    <span class="time-ago"> 7 hours ago </span>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                        <span class="notification-avatar">
+                                            <img src="assets/images/avatars/avatar-1.jpg" alt="">
+                                        </span>
+                                <div class="notification-text notification-msg-text">
+                                    <strong>Alex Dolgove</strong>
+                                    <p> Alia just joined Messenger! Be the first to send a
+                                        welcome message..</p>
+                                    <span class="time-ago"> 19 hours ago </span>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                        <span class="notification-avatar">
+                                            <img src="assets/images/avatars/avatar-4.jpg" alt="">
+                                        </span>
+                                <div class="notification-text notification-msg-text">
+                                    <strong>Adrian Mohani</strong>
+                                    <p> Okay.. Thanks for The Answer I will be waiting for your... </p>
+                                    <span class="time-ago"> Yesterday </span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
 
-            <!--                </div>-->
-            <!--                <div class="dropdown-notifications-footer">-->
-            <!--                    <a href="#"> 清空 <i class="icon-line-awesome-long-arrow-right"></i> </a>-->
-            <!--                </div>-->
-
-
-            <!--            </div>-->
+                </div>
+                <div class="dropdown-notifications-footer">
+                    <a href="#"> 清空 <i class="icon-line-awesome-long-arrow-right"></i> </a>
+                </div>
 
 
-            <!--            &lt;!&ndash; notificiation icon  &ndash;&gt;-->
-            <!--            <a href="#" class="opts_icon"> <i class="uil-bell"></i> <span>3</span> </a>-->
-
-            <!--            &lt;!&ndash; notificiation dropdown &ndash;&gt;-->
-            <!--            <div uk-dropdown="pos: top-right;mode:click ; animation: uk-animation-slide-bottom-small"-->
-            <!--                 class="dropdown-notifications">-->
-
-            <!--                &lt;!&ndash; notivication header &ndash;&gt;-->
-            <!--                <div class="dropdown-notifications-headline">-->
-            <!--                    <h4>我的消息 </h4>-->
-            <!--                    <a href="#">-->
-            <!--                        <i class="icon-feather-settings"-->
-            <!--                           uk-tooltip="title: 消息设置 ; pos: left"></i>-->
-            <!--                    </a>-->
-            <!--                </div>-->
-
-            <!-- notification contents -->
-            <!--                <div class="dropdown-notifications-content" data-simplebar>-->
-
-            <!--                    &lt;!&ndash; notiviation list &ndash;&gt;-->
-            <!--                    <ul>-->
-            <!--                        <li class="notifications-not-read">-->
-            <!--                            <a href="#">-->
-            <!--                                        <span class="notification-icon">-->
-            <!--                                            <i class="icon-feather-thumbs-up"></i></span>-->
-            <!--                                <span class="notification-text">-->
-            <!--                                            <strong>Adrian Mohani</strong> Like Your Comment On Video-->
-            <!--                                            <span class="text-primary">Learn Prototype Faster</span>-->
-            <!--                                            <br> <span class="time-ago"> 9 hours ago </span>-->
-            <!--                                        </span>-->
-            <!--                            </a>-->
-            <!--                        </li>-->
-            <!--                        <li>-->
-            <!--                            <a href="#">-->
-            <!--                                        <span class="notification-icon">-->
-            <!--                                            <i class="icon-feather-star"></i></span>-->
-            <!--                                <span class="notification-text">-->
-            <!--                                            <strong>Alex Dolgove</strong> Added New Review In Video-->
-            <!--                                            <span class="text-primary">Full Stack PHP Developer</span>-->
-            <!--                                            <br> <span class="time-ago"> 19 hours ago </span>-->
-            <!--                                        </span>-->
-            <!--                            </a>-->
-            <!--                        </li>-->
-            <!--                        <li>-->
-            <!--                            <a href="#">-->
-            <!--                                        <span class="notification-icon">-->
-            <!--                                            <i class="icon-feather-message-circle"></i></span>-->
-            <!--                                <span class="notification-text">-->
-            <!--                                            <strong>Stella Johnson</strong> Replay Your Comments in-->
-            <!--                                            <span class="text-primary">Adobe XD Tutorial</span>-->
-            <!--                                            <br> <span class="time-ago"> 12 hours ago </span>-->
-            <!--                                        </span>-->
-            <!--                            </a>-->
-            <!--                        </li>-->
-            <!--                        <li>-->
-            <!--                            <a href="#">-->
-            <!--                                        <span class="notification-icon">-->
-            <!--                                            <i class="icon-feather-share-2"></i></span>-->
-            <!--                                <span class="notification-text">-->
-            <!--                                            <strong>Adrian Mohani</strong> Like Your Comment On Video-->
-            <!--                                            <span class="text-primary">Learn Prototype Faster</span>-->
-            <!--                                            <br> <span class="time-ago"> Yesterday </span>-->
-            <!--                                        </span>-->
-            <!--                            </a>-->
-            <!--                        </li>-->
-            <!--                    </ul>-->
-
-            <!--                </div>-->
+            </div>
 
 
-            <!--            </div>-->
+            <!-- notificiation icon  -->
+            <a href="#" class="opts_icon"> <i class="uil-bell"></i> <span>3</span> </a>
+
+            <!-- notificiation dropdown -->
+            <div uk-dropdown="pos: top-right;mode:click ; animation: uk-animation-slide-bottom-small"
+                 class="dropdown-notifications">
+
+                <!-- notivication header -->
+                <div class="dropdown-notifications-headline">
+                    <h4>我的消息 </h4>
+                    <a href="#">
+                        <i class="icon-feather-settings"
+                           uk-tooltip="title: 消息设置 ; pos: left"></i>
+                    </a>
+                </div>
+
+                <!-- notification contents -->
+                <div class="dropdown-notifications-content" data-simplebar>
+
+                    <!-- notiviation list -->
+                    <ul>
+                        <li class="notifications-not-read">
+                            <a href="#">
+                                        <span class="notification-icon">
+                                            <i class="icon-feather-thumbs-up"></i></span>
+                                <span class="notification-text">
+                                            <strong>Adrian Mohani</strong> Like Your Comment On Video
+                                            <span class="text-primary">Learn Prototype Faster</span>
+                                            <br> <span class="time-ago"> 9 hours ago </span>
+                                        </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                        <span class="notification-icon">
+                                            <i class="icon-feather-star"></i></span>
+                                <span class="notification-text">
+                                            <strong>Alex Dolgove</strong> Added New Review In Video
+                                            <span class="text-primary">Full Stack PHP Developer</span>
+                                            <br> <span class="time-ago"> 19 hours ago </span>
+                                        </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                        <span class="notification-icon">
+                                            <i class="icon-feather-message-circle"></i></span>
+                                <span class="notification-text">
+                                            <strong>Stella Johnson</strong> Replay Your Comments in
+                                            <span class="text-primary">Adobe XD Tutorial</span>
+                                            <br> <span class="time-ago"> 12 hours ago </span>
+                                        </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                        <span class="notification-icon">
+                                            <i class="icon-feather-share-2"></i></span>
+                                <span class="notification-text">
+                                            <strong>Adrian Mohani</strong> Like Your Comment On Video
+                                            <span class="text-primary">Learn Prototype Faster</span>
+                                            <br> <span class="time-ago"> Yesterday </span>
+                                        </span>
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+
+
+            </div>
 
 
             <!-- profile -image -->
