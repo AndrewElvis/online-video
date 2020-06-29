@@ -152,5 +152,13 @@ public class VideoController {
         return videoService.getOne(wrapper);
     }
 
+    @GetMapping("/getUserIdBySourceId/{id}")
+    public Video getUserIdBySourceId(@PathVariable String id) {
+        QueryWrapper<Video> wrapper = new QueryWrapper<>();
+        wrapper.eq("source_id", id);
+        wrapper.select("user_id");
+        return videoService.getOne(wrapper);
+    }
+
 }
 
