@@ -20,7 +20,6 @@
     <script th:src="@{/assets/js/main.js}"></script>
 
     <script th:src="@{/assets/js/axios.min.js}"></script>
-    <script th:src="@{/assets/js/test.js}"></script>
     <!-- 引入样式 -->
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     <!-- 引入组件库 -->
@@ -204,7 +203,7 @@
                         <ul class="uk-slider-items uk-child-width-1-5@m uk-child-width-1-2@s uk-grid mb-3">
             
                                         <li  th:each="channals,itemStat : ${findChannals}" th:if="${itemStat.count < 10}" >
-                                            <a th:href="@{/single-channal.html}">
+                                            <a th:href="@{'/views/channel/' + ${channals.id}}">
                                                 <div class="single-channal">
                                                     <div class="single-channal-creator">
                                                         <img th:src="${channals.avatar}" alt="">

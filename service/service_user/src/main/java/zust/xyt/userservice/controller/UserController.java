@@ -91,6 +91,7 @@ public class UserController {
         while (userIterator.hasNext()){
             User next = userIterator.next();
             ChannalVo channal = new ChannalVo();
+            channal.setId(next.getId());
             channal.setAvatar(next.getAvatar());
             channal.setFansNum(next.getFansNum());
             channal.setName(next.getName());

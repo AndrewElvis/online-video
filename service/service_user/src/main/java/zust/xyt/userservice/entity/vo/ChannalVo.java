@@ -9,6 +9,8 @@ import lombok.Data;
  */
 @Data
 public class ChannalVo {
+    private String id;
+
     @ApiModelProperty("用户头像")
     private String avatar;
 
