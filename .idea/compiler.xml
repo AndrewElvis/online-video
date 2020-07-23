@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="commons_utils" />
+        <module name="eureka_server" />
+        <module name="service_video" />
+        <module name="service_views" />
+        <module name="service_user" />
+        <module name="service_base" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="common" target="1.8" />
+      <module name="commons_utils" target="1.8" />
+      <module name="eureka_server" target="1.8" />
+      <module name="online-video" target="1.8" />
+      <module name="service" target="1.8" />
+      <module name="service_base" target="1.8" />
+      <module name="service_user" target="1.8" />
+      <module name="service_video" target="1.8" />
+      <module name="service_views" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="common" options="-parameters" />
+      <module name="commons_utils" options="-parameters" />
+      <module name="eureka_server" options="-parameters" />
+      <module name="service_base" options="-parameters" />
+      <module name="service_user" options="-parameters" />
+      <module name="service_video" options="-parameters" />
+      <module name="service_views" options="-parameters" />
+    </option>
+  </component>
+</project>

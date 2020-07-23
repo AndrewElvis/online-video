@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <!-- Basic Page Needs
+    ================================================== -->
+    <title>TubeLite Streaming Video HTML Template</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="TubeLite is - Professional A unique and beautiful collection of UI elements">
+    <link rel="icon" th:href="@{/assets/images/favicon.png}">
+
+    <script th:src="@{/assets/js/vue.min.js}"></script>
+    <!-- javaScripts
+                ================================================== -->
+    <script th:src="@{/assets/js/framework.js}"></script>
+    <script th:src="@{/assets/js/jquery-3.3.1.min.js}"></script>
+    <script th:src="@{/assets/js/simplebar.js}"></script>
+    <script th:src="@{/assets/js/main.js}"></script>
+
+    <script th:src="@{/assets/js/axios.min.js}"></script>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+
+
+
+    <!-- CSS 
+    ================================================== -->
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/night-mode.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/framework.css}">
+
+    <!-- icons
+    ================================================== -->
+    <link rel="stylesheet" th:href="@{/assets/css/icons.css}">
+
+    <!-- Google font
+    ================================================== -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+
+</head>
+
+
+<body>
+
+<div id="app">
+    <!-- Wrapper -->
+    <div id="wrapper" class="sidebar-out">
+
+        <!-- sidebar -->
+        <div th:replace="commons/bar::sidebar"></div>
+
+        <!-- header -->
+        <div th:replace="commons/bar::header"></div>
+
+        <!-- contents -->
+        <div class="main_content content-expand">
+            <div class="main_content_inner">
+
+
+                <div uk-grid>
+                    <div class="uk-width-2-3@m">
+
+                        <div id="video-box" uk-sticky="top: 400 ;media : @s"
+                            cls-active="video-resized uk-animation-slide-right;">
+                            <span class="icon-feather-x btn-box-close"
+                                uk-toggle="target: #video-box ; cls: video-resized-hedden uk-animation-slide-left"></span>
+
+                            <div th:class="embed-video">
+                                <iframe th:src="${url}" frameborder="0"
+                                    uk-video="automute: true" allowfullscreen uk-responsive></iframe>
+                            </div>
+                        </div>
+
+                        <div class="video-info mt-3">
+
+                            <!-- video title -->
+                            <div class="video-info-title">
+                                <h1 th:text="${video.title}"> Course developed by Mike Dane. Check out his YouTube
+                                    channel for more great programming </h1>
+                            </div>
+
+                            <div class="uk-flex uk-flex-between">
+
+                                <div class="video-info-details">
+                                    <span>播放数</span> <span th:text="${video.count}">60,723,169 views </span>
+                                </div>
+                                <div class="video-likes">
+                                    <div class="like-btn" uk-tooltip="I like it">
+                                        <i class="uil-thumbs-up"></i>
+                                        <span class="likes" th:text="${video.likes}">21</span>
+                                    </div>
+                                    <!--<div class="video-info-element">
+                                        <div class="views-bar"></div>
+                                        <div class="views-bar blue" style="width: 40%"></div>
+                                    </div>
+                                    <div class="like-btn" uk-tooltip="I Hate it">
+                                        <i class="uil-thumbs-down"></i>
+                                        <span class="likes">14</span>
+                                    </div>-->
+                                </div>
+
+                            </div>
+
+
+                            <div class="uk-flex uk-flex-between uk-flex-middle" uk-grid>
+                                <div class="user-details-card uk-width-expand">
+                                    <a href="single-channal.html" class="uk-flex">
+                                        <div class="user-details-card-avatar">
+                                            <img th:src="${videoUser.avatar}" alt="">
+                                        </div>
+                                        <div class="user-details-card-name">
+                                            <span th:text="${videoUser.nickname}"></span> <span th:text="${videoUser.gmtCreate}">
+                                            Published on Oct 22, 2017
+                                        </span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="uk-width-auto uk-flex">
+
+
+                                    <div class="btn-subscribe">
+                                        <a href="#" class="button primary"> <i class="icon-feather-plus"></i>
+                                            订阅 </a>
+                                        <!--<span class="subs-amount">1200</span>-->
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <hr class="mt-0 mb-2">
+
+
+                            <h3> 视频简介</h3>
+                            <p th:text="${video.intro}"></p>
+
+                        </div>
+
+                        <hr>
+
+                        <div class="comments mt-4">
+                            <h3> 评论 <span class="comments-amount">3</span> </h3>
+
+                            <ul>
+                                <li>
+                                    <div class="avatar"><img th:src="@{/assets/images/avatars/avatar-1.jpg}" alt="">
+                                    </div>
+                                    <div class="comment-content">
+                                        <div class="comment-by">Jonathan Madano <span>Student</span>
+                                            <a href="#" class="reply"><i class="icon-line-awesome-undo"></i>
+                                                Reply</a>
+                                        </div>
+                                        <p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
+                                            nonummy
+                                            nibh
+                                            euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi
+                                            enim ad
+                                            minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis
+                                            nisl
+                                            ut
+                                            aliquip ex ea commodo consequat. Nam liber tempor cum soluta nobis
+                                            eleifend
+                                            option
+                                            congue </p>
+                                    </div>
+
+                                    <ul>
+                                        <li>
+                                            <div class="avatar"><img th:src="@{/assets/images/avatars/avatar-2.jpg}"
+                                                                     alt="">
+                                            </div>
+                                            <div class="comment-content">
+                                                <div class="comment-by">Stella Johnson<span>Student</span>
+                                                    <a href="#" class="reply"><i class="icon-line-awesome-undo"></i>
+                                                        Reply</a>
+                                                </div>
+                                                <p> Nam liber tempor cum soluta nobis eleifend option congue ut
+                                                    laoreet
+                                                    dolore
+                                                    magna aliquam erat volutpat nihil imperdiet doming id quod mazim
+                                                    placerat
+                                                    facer possim assum. Lorem ipsum dolor sit amet</p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="avatar">
+                                                <img th:src="@{/assets/images/avatars/avatar-3.jpg}" alt=""></div>
+                                            <div class="comment-content">
+
+                                                <div class="comment-by">Adrian Mohani <span>Student</span>
+                                                    <a href="#" class="reply"><i class="icon-line-awesome-undo"></i>
+                                                        Reply</a>
+                                                </div>
+                                                <p>tempor cum soluta nobis eleifend option congue ut laoreet dolore
+                                                    magna
+                                                    aliquam erat volutpat.</p>
+                                            </div>
+
+                                        </li>
+                                    </ul>
+
+                                </li>
+
+                                <!--<li>
+                                    <div class="avatar"><img th:src="@{/assets/images/avatars/avatar-4.jpg}" alt="">
+                                    </div>
+                                    <div class="comment-content">
+
+                                        <div class="comment-by">Alex Dolgove<span>Student</span>
+                                            <a href="#" class="reply"><i class="icon-line-awesome-undo"></i>
+                                                Reply</a>
+                                        </div>
+                                        <p>Nam liber tempor cum soluta nobis eleifend option congue ut laoreet
+                                            dolore
+                                            magna
+                                            aliquam erat volutpat nihil imperdiet doming id quod mazim placerat
+                                            facer
+                                            possim
+                                            assum. Lorem ipsum dolor sit amet</p>
+                                    </div>
+
+                                </li>-->
+
+                            </ul>
+
+                        </div>
+
+                        <div class="comments">
+                            <h4>添加评论 </h4>
+                            <ul>
+                                <li>
+                                    <div class="avatar"><img src="https://aliyun-oss-xyt.oss-cn-hangzhou.aliyuncs.com/1.JPG" alt="">
+                                    </div>
+                                    <div class="comment-content">
+                                        <form class="uk-grid-small" uk-grid>
+                                            <div class="uk-width-1-2@s">
+                                                <label class="uk-form-label">名称</label>
+                                                <input class="uk-input" type="text" placeholder="名称">
+                                            </div>
+                                            <div class="uk-width-1-2@s">
+                                                <label class="uk-form-label">Email</label>
+                                                <input class="uk-input" type="text" placeholder="Email">
+                                            </div>
+                                            <div class="uk-width-1-1@s">
+                                                <label class="uk-form-label">评论</label>
+                                                <textarea class="uk-textarea" placeholder="请输入你的评论"
+                                                    style=" height:160px"></textarea>
+                                            </div>
+                                            <div class="uk-grid-margin">
+                                                <input type="submit" value="提交" class="button primary">
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+
+
+
+
+                    </div>
+                    <div class="uk-width-expand@m">
+
+                        <div class="uk-flex uk-flex-middle uk-flex-between px-1 pb-3">
+                            <p class="mb-0 uk-h5"> 推荐 </p>
+
+                            <!--<label class="btn-switch">
+                                <input type="checkbox">
+                                <span class="btn-switch-slider" uk-toggle="target: #wrapper; cls: menu-small"></span>
+                            </label>-->
+
+                        </div>
+                        <div class="video-list-small uk-child-width-1-1@m uk-child-width-1-2@s" uk-grid>
+
+
+                            <div th:each="video : ${videoList}">
+                                <a href="#" class="video-post video-post-list">
+                                    <!-- Blog Post Thumbnail -->
+                                    <div class="video-post-thumbnail">
+                                        <span class="video-post-count">1.4M</span>
+                                        <span class="video-post-time">23:00</span>
+                                        <span class="play-btn-trigger"></span>
+
+                                        <img th:src="${video.cover}" alt="">
+
+                                    </div>
+
+                                    <!-- Blog Post Content -->
+                                    <div class="video-post-content">
+                                        <h3 th:text="${video.title}"> How to create a basic Sticky HTML element .. </h3>
+                                        <img th:src="${video.userAvatar}" alt="">
+                                        <span class="video-post-user" th:text="${video.userNickName}">Jonathan Madano</span>
+                                        <span>播放数</span> <span class="video-post-views" th:text="${video.count}">531k
+                                        views</span><br/>
+                                        <span>上传时间</span> <span class="video-post-date" th:text="${video.gmtCreate}">2 weeks ago</span>
+                                        <!-- option menu -->
+                                        <span class="btn-option">
+                                            <i class="icon-feather-more-vertical"></i>
+                                        </span>
+                                        <div class="dropdown-option-nav"
+                                            uk-dropdown="pos: bottom-right ;mode : hover ;animation: uk-animation-slide-bottom-small">
+                                            <ul>
+                                                <li> <span> <i class="uil-history"></i> 稍后观看</span> </li>
+                                                <li> <span> <i class="uil-bookmark"></i> 加入收藏</span> </li>
+                                                <li> <span> <i class="uil-share-alt"></i> 分享</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+                <!-- footer
+               ================================================== -->
+                <div class="footer">
+                    <div class="uk-grid-collapse" uk-grid>
+                        <div class="uk-width-expand@s uk-first-column">
+                            <p>© 2020 <strong>TubeLite</strong>. All Rights Reserved. </p>
+                        </div>
+                        <div class="uk-width-auto@s">
+                            <nav class="footer-nav-icon">
+                                <ul>
+                                    <li><a href="#"><i class="icon-brand-facebook"></i></a></li>
+                                    <li><a href="#"><i class="icon-brand-dribbble"></i></a></li>
+                                    <li><a href="#"><i class="icon-brand-youtube"></i></a></li>
+                                    <li><a href="#"><i class="icon-brand-twitter"></i></a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: function() {
+            return {
+                video: {
+                    cover: "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif",
+                    title: '',
+                    sourceId: '',
+                    originalName:'',//视频名称
+                },
+                saveBtnDisabled: false, // 保存按钮是否禁用
+                BASE_API: 'http://127.0.0.1:8002',
+                fileList: []
+            }
+        },
+        methods: {
+            //点击确定调用的方法
+            handleVodRemove() {
+                //调用接口的删除视频的方法
+                axios.delete('http://127.0.0.1:8002/vod/removeAliVideo/'+this.video.sourceId)
+                    .then(response => {
+                        //提示信息
+                        this.$message({
+                            type: 'success',
+                            message: '删除视频成功!'
+                        });
+                        //把文件列表清空
+                        this.fileList = [];
+                        //把video视频id和视频名称值清空
+                        //上传视频id赋值
+                        this.video.sourceId = '';
+                        //上传视频名称赋值
+                        this.video.originalName = ''
+                    })
+            },
+            //点击×调用这个方法
+            beforeVodRemove(file,fileList) {
+                return this.$confirm(`确定移除 ${ file.name }？`);
+            },
+            //上传视频成功调用的方法
+            handleVodUploadSuccess(response, file, fileList) {
+                //上传视频id赋值
+                this.video.sourceId = response.data.videoId;
+                //上传视频名称赋值
+                this.video.originalName = file.name
+            },
+            handleUploadExceed() {
+                this.$message.warning('想要重新上传视频，请先删除已上传的视频')
+            },
+            saveVideo() {
+                console.log(this.video)
+                // axios.post('http://127.0.0.1:8002/video/',{data: this.video})
+                axios({
+                    method: 'post',
+                    url: 'http://127.0.0.1:8002/video/',
+                    data: this.video
+                }).then(
+                    resp => {
+                        this.$message({
+                            type: 'success',
+                            message: '上传视频成功!'
+                        });
+                    }
+                )
+            }
+        }
+    })
+</script>
+<style>
+    .el-dropdown-menu {
+        width: 450px;
+    }
+    .el-dropdown {
+        vertical-align: top;
+    }
+    .el-dropdown + .el-dropdown {
+        margin-left: 15px;
+    }
+    .el-icon-arrow-down {
+        font-size: 12px;
+    }
+    .el-form {
+        width: 400px;
+        margin-left: 20px;
+    }
+</style>
+
+</body>
+<!--<script th:src="@{/assets/js/single-video.js}"></script>-->
+<!--<script th:src="@{/assets/js/uploadFile.js}"></script>-->
+</html>

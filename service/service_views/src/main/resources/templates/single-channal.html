@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+
+    <!-- Basic Page Needs
+    ================================================== -->
+    <title>TubeLite Streaming Video HTML Template</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="TubeLite is - Professional A unique and beautiful collection of UI elements">
+    <link rel="icon" th:href="@{/assets/images/favicon.png}">
+
+    <script th:src="@{/assets/js/vue.min.js}"></script>
+    <!-- javaScripts
+                ================================================== -->
+    <script th:src="@{/assets/js/framework.js}"></script>
+    <script th:src="@{/assets/js/jquery-3.3.1.min.js}"></script>
+    <script th:src="@{/assets/js/simplebar.js}"></script>
+    <script th:src="@{/assets/js/main.js}"></script>
+
+    <script th:src="@{/assets/js/axios.min.js}"></script>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/night-mode.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/framework.css}">
+
+
+    <!-- icons
+    ================================================== -->
+    <link rel="stylesheet" th:href="@{/assets/css/icons.css}">
+
+    <!-- Google font
+    ================================================== -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div id="app">
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        <!-- sidebar -->
+        <div th:replace="commons/bar::sidebar"></div>
+
+        <!-- header -->
+        <div th:replace="commons/bar::header"></div>
+
+        <!-- contents -->
+        <div class="main_content">
+
+            <div class="channal">
+                <div class="channal-cover">
+
+                    <!-- channal cover -->
+                    <img th:src="@{/assets/images/channnal-cover.jpg}" alt="">
+
+                </div>
+
+                <div class="main_content_inner">
+                    <div class="channal-details">
+                        <div class="left-side">
+                            <div class="channal-image">
+                                <a href="#">
+                                    <img th:src="${channelUser.avatar}" alt="">
+                                </a>
+                            </div>
+                            <div class="channal-details-info">
+                                <h3 th:text="${channelUser.nickname}"></h3>
+
+                                    <span th:text="${channelUser.fansNum}"></span><span>订阅</span>
+
+                            </div>
+                        </div>
+                        <div class="right-side">
+                            <div class="btn-subscribe">
+                                <a href="#" class="button primary"> <i class="icon-feather-plus"></i> 订阅
+                                </a>
+                                <span class="subs-amount" >
+                                    <span th:text="${channelUser.subscribeNum}"></span><span>关注者</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--<div class="nav-channal" k-sticky="offset:61;media : @s">
+                        <nav class="responsive-tab">
+                            <ul>
+                                <li class="uk-active"><a class="active" href="#0">Home</a></li>
+                                <li><a href="#0">Videos</a></li>
+                                <li><a href="#0">Playlist</a></li>
+                                <li><a href="#0">Channels</a></li>
+                                <li><a href="#0">About</a></li>
+                            </ul>
+                        </nav>
+                        <form class="nav-channal-saerchbox">
+                            <i class="uil-search"></i>
+                            <input class="uk-input" type="text" value="Search Video...">
+                        </form>
+                    </div>-->
+                </div>
+
+
+            </div>
+
+            <div class="main_content_inner">
+
+
+                <!-- feature video-->
+                <div class="uk-grid-large" uk-grid>
+                    <div class="uk-width-3-4@m">
+
+                        <h3> 最热视频 </h3>
+
+                        <div class="uk-card uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
+                            <div class="uk-card-media-left uk-cover-container">
+
+
+                                <div class="embed-video">
+                                    <iframe th:src="${url}" frameborder="0"
+                                        uk-video="automute: true" allowfullscreen uk-responsive></iframe>
+                                </div>
+
+                                <!--  Single image
+                                <img src="assets/images/photo2.jpg" alt="" uk-cover>
+                                <canvas width="600" height="350"></canvas> -->
+
+                            </div>
+                            <div>
+                                <div class="pl-lg-5 mt-sm-3">
+                                    <h3 class="uk-card-title" th:text="${channelVideo.title}"></h3>
+                                    <p th:text="${channelVideo.intro}"></p>
+
+                                        <div class="user-details-card py-0">
+                                            <div class="user-details-card-avatar">
+                                                <img th:src="${channelUser.avatar}" style="width: 40px;" alt="">
+                                            </div>
+                                            <div class="user-details-card-name">
+                                                <strong th:text="${channelUser.nickname}"></strong><br/>
+                                                <span th:text="${channelUser.gmtCreate}"></span><span>入站</span>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="section-small">
+                    <h3> 全部视频 </h3>
+
+                    <div class="video-grid-slider" uk-slider="finite: true">
+                        <ul class="uk-slider-items uk-child-width-1-4@m uk-child-width-1-3@s uk-grid">
+
+                            <li th:each="video : ${channelVideoList}">
+                                <a th:href="@{'/views/video/' + ${video.sourceId}}" class="video-post">
+                                    <!-- Blog Post Thumbnail -->
+                                    <div class="video-post-thumbnail">
+                                        <span class="video-post-count" th:text="${video.count}">2.7K</span>
+                                        <span class="video-post-time" th:text="${video.duration}">23:00</span>
+                                        <span class="play-btn-trigger"></span>
+                                        <!-- option menu -->
+                                        <span class="btn-option">
+                                            <i class="icon-feather-more-vertical"></i>
+                                        </span>
+                                        <div class="dropdown-option-nav"
+                                            uk-dropdown="pos: bottom-right ;mode : hover ;animation: uk-animation-slide-bottom-small">
+                                            <ul>
+                                                <li>
+                                                    <span> <i class="uil-history"></i> 稍后观看</span>
+                                                </li>
+                                                <li>
+                                                    <span> <i class="uil-bookmark"></i> 加入收藏</span>
+                                                </li>
+                                                <li>
+                                                    <span> <i class="uil-share-alt"></i> 分享</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <img th:src="${video.cover}" alt="">
+                                    </div>
+                                    <!-- Blog Post Content -->
+                                    <div class="video-post-content">
+                                        <h3 th:text="${video.title}"></h3>
+                                        <img th:src="${video.userAvatar}" alt="">
+                                        <span class="video-post-user" th:text="${video.userNickName}"></span>
+                                        <span class="video-post-views" th:text="${video.count}"></span>
+                                        <span class="video-post-date" th:text="${video.gmtCreate}"> 2 weeks ago </span>
+                                    </div>
+                                </a>
+                            </li>
+
+
+                        </ul>
+
+                        <a class="uk-position-center-left uk-position-small uk-hidden-hover slidenav-prev" href="#"
+                            uk-slider-item="previous"></a>
+                        <a class="uk-position-center-right uk-position-small uk-hidden-hover slidenav-next" href="#"
+                            uk-slider-item="next"></a>
+
+
+                    </div>
+
+                </div>
+
+                <!--<div class="section-small">
+
+                    <h3> All Videos </h3>
+
+                    <div class="uk-child-width-1-4@m mb-11" uk-grid
+                        uk-scrollspy="target: > div; cls: uk-animation-slide-bottom-small; delay: 100">
+
+                        <div>
+                            <a th:href="@{/single-video.html}" class="video-post">
+                                &lt;!&ndash; Blog Post Thumbnail &ndash;&gt;
+                                <div class="video-post-thumbnail">
+                                    <span class="video-post-count">1.4M</span>
+                                    <span class="video-post-time">23:00</span>
+                                    <span class="play-btn-trigger"></span>
+                                    &lt;!&ndash; option menu &ndash;&gt;
+                                    <span class="btn-option">
+                                        <i class="icon-feather-more-vertical"></i>
+                                    </span>
+                                    <div class="dropdown-option-nav"
+                                        uk-dropdown="pos: bottom-right ;mode : hover ;animation: uk-animation-slide-bottom-small">
+                                        <ul>
+                                            <li>
+                                                <span> <i class="uil-history"></i> Watch Later</span>
+                                            </li>
+                                            <li>
+                                                <span> <i class="uil-bookmark"></i> Add Bookmark</span>
+                                            </li>
+                                            <li>
+                                                <span> <i class="uil-share-alt"></i> Share Your Friends</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <img th:src="@{/assets/images/video-thumbal/2.png}" alt="">
+
+                                </div>
+
+                                &lt;!&ndash; Blog Post Content &ndash;&gt;
+                                <div class="video-post-content">
+                                    <h3> How to create a basic Sticky HTML element using CSS </h3>
+                                    <img th:src="@{/assets/images/avatars/avatar-3.jpg}" alt="">
+                                    <span class="video-post-user">Jonathan Madano</span>
+                                    <span class="video-post-views">531k views</span>
+                                    <span class="video-post-date"> 2 weeks ago </span>
+                                </div>
+                            </a>
+                        </div>
+
+
+
+                    </div>
+
+                    <ul class="uk-pagination my-5 uk-flex-center" uk-margin>
+                        <li class="uk-active"><span>1</span></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li class="uk-disabled"><span>...</span></li>
+                        <li><a href="#"><span uk-pagination-next></span></a></li>
+                    </ul>
+
+                </div>-->
+
+
+                <!-- footer
+               ================================================== -->
+                <div class="footer">
+                    <div class="uk-grid-collapse" uk-grid>
+                        <div class="uk-width-expand@s uk-first-column">
+                            <p>© 2020 <strong>TubeStar</strong>. All Rights Reserved. </p>
+                        </div>
+                        <div class="uk-width-auto@s">
+                            <nav class="footer-nav-icon">
+                                <ul>
+                                    <li><a href="#"><i class="icon-brand-facebook"></i></a></li>
+                                    <li><a href="#"><i class="icon-brand-dribbble"></i></a></li>
+                                    <li><a href="#"><i class="icon-brand-youtube"></i></a></li>
+                                    <li><a href="#"><i class="icon-brand-twitter"></i></a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+    <!-- For Night mode -->
+    <script>
+        (function (window, document, undefined) {
+            'use strict';
+            if (!('localStorage' in window)) return;
+            var nightMode = localStorage.getItem('gmtNightMode');
+            if (nightMode) {
+                document.documentElement.className += ' night-mode';
+            }
+        })(window, document);
+
+
+        (function (window, document, undefined) {
+
+            'use strict';
+
+            // Feature test
+            if (!('localStorage' in window)) return;
+
+            // Get our newly insert toggle
+            var nightMode = document.querySelector('#night-mode');
+            if (!nightMode) return;
+
+            // When clicked, toggle night mode on or off
+            nightMode.addEventListener('click', function (event) {
+                event.preventDefault();
+                document.documentElement.classList.toggle('night-mode');
+                if (document.documentElement.classList.contains('night-mode')) {
+                    localStorage.setItem('gmtNightMode', true);
+                    return;
+                }
+                localStorage.removeItem('gmtNightMode');
+            }, false);
+
+        })(window, document);
+    </script>
+
+
+</body>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: function() {
+            return {
+                video: {
+                    cover: "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif",
+                    title: '',
+                    sourceId: '',
+                    originalName:'',//视频名称
+                },
+                saveBtnDisabled: false, // 保存按钮是否禁用
+                BASE_API: 'http://127.0.0.1:8002',
+                fileList: []
+            }
+        },
+        methods: {
+            //点击确定调用的方法
+            handleVodRemove() {
+                //调用接口的删除视频的方法
+                axios.delete('http://127.0.0.1:8002/vod/removeAliVideo/'+this.video.sourceId)
+                    .then(response => {
+                        //提示信息
+                        this.$message({
+                            type: 'success',
+                            message: '删除视频成功!'
+                        });
+                        //把文件列表清空
+                        this.fileList = [];
+                        //把video视频id和视频名称值清空
+                        //上传视频id赋值
+                        this.video.sourceId = '';
+                        //上传视频名称赋值
+                        this.video.originalName = ''
+                    })
+            },
+            //点击×调用这个方法
+            beforeVodRemove(file,fileList) {
+                return this.$confirm(`确定移除 ${ file.name }？`);
+            },
+            //上传视频成功调用的方法
+            handleVodUploadSuccess(response, file, fileList) {
+                //上传视频id赋值
+                this.video.sourceId = response.data.videoId;
+                //上传视频名称赋值
+                this.video.originalName = file.name
+            },
+            handleUploadExceed() {
+                this.$message.warning('想要重新上传视频，请先删除已上传的视频')
+            },
+            saveVideo() {
+                console.log(this.video)
+                // axios.post('http://127.0.0.1:8002/video/',{data: this.video})
+                axios({
+                    method: 'post',
+                    url: 'http://127.0.0.1:8002/video/',
+                    data: this.video
+                }).then(
+                    resp => {
+                        this.$message({
+                            type: 'success',
+                            message: '上传视频成功!'
+                        });
+                    }
+                )
+            }
+        }
+    })
+</script>
+
+<style>
+    .el-dropdown-menu {
+        width: 450px;
+    }
+    .el-dropdown {
+        vertical-align: top;
+    }
+    .el-dropdown + .el-dropdown {
+        margin-left: 5px;
+    }
+    .el-icon-arrow-down {
+        font-size: 12px;
+    }
+    .el-form {
+        width: 400px;
+        margin-left: 10px;
+    }
+</style>
+
+</html>
