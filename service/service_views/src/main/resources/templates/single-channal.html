@@ -162,7 +162,7 @@
                         <ul class="uk-slider-items uk-child-width-1-4@m uk-child-width-1-3@s uk-grid">
 
                             <li th:each="video : ${channelVideoList}">
-                                <a th:href="@{'/views/video' + ${video.sourceId}}" class="video-post">
+                                <a th:href="@{'/views/video/' + ${video.sourceId}}" class="video-post">
                                     <!-- Blog Post Thumbnail -->
                                     <div class="video-post-thumbnail">
                                         <span class="video-post-count" th:text="${video.count}">2.7K</span>

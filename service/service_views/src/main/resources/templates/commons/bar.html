@@ -29,7 +29,8 @@
                         <i class="uil-users-alt"></i> <span> 排行榜 </span> </a></li>
                     <!--<li th:class="${activeUri=='watchlater'?'active':''}"><a href="your-watch-later.html"> <i
                             class="uil-clock"></i> <span> 稍后再看 </span> </a></li>-->
-                    <li th:class="${activeUri=='like'?'active':''}"><a th:href="@{/views/channel/1273857412729692122}"> <i
+                    <li th:class="${activeUri=='like'?'active':''}"><a
+                            th:href="@{'/views/channel/1273857412729692122' + '?userId=' + ${user.id}} "> <i
                             class="uil-thumbs-up"></i> <span> 我的主页 </span>
                     </a></li>
                     <li th:class="${activeUri=='catagroies'?'active':''}"><a href="browse-catagroies.html"> <i class="uil-layers"></i> <span> 菜单分类</span> </a></li>
@@ -43,7 +44,8 @@
                 <h3> 我的订阅 </h3>
                 <ul>
                     <li th:each="subscribe,itemStat : ${subscribes}" th:if="${itemStat.count < 5}"><a
-                            href="single-channal.html"><img th:src=${subscribe.avatar} alt="">
+                            th:href="@{'/views/channel/'+ ${subscribe.id} + '?userId=' + ${user.id}} "><img
+                            th:src=${subscribe.avatar} alt="">
                         <span th:text=" ${subscribe.name}"></span> <span class="dot-notiv"></span></a> </li>
                 </ul>
 
@@ -223,7 +225,7 @@
                                     <span class="video-post-time">23:00</span>
                                     <span class="play-btn-trigger"></span>
 
-                                    <img src="assets/images/video-thumbal/2.png" alt="">
+                                    <img th:src="${subVideo.cover}" alt="">
 
                                 </div>
 
@@ -521,9 +523,7 @@
                 <!-- User menu -->
 
                 <ul class="dropdown-user-menu">
-                    <li><a href="#"> <i class="uil-user"></i> 我的频道 </a> </li>
-                    <li><a href="#"> <i class="uil-thumbs-up"></i> 我的喜欢 </a></li>
-                    <li><a href="#"> <i class="uil-history"></i> 稍后再看 </a></li>
+                    <li><a th:href="@{'/views/channel/1273857412729692122' + '?userId=' + ${user.id}} "> <i class="uil-user"></i> 我的频道 </a> </li>
                     <li><a href="#"> <i class="uil-cog"></i> 账号中心</a></li>
                     <!--                    <li><a href="#" style="color:#ff8400"> <i class="uil-bolt"></i> Upgrade To Premium</a> </li>-->
                     <div class="menu-divider">

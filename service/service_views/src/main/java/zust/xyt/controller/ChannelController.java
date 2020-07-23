@@ -10,10 +10,11 @@ import org.springframework.web.client.RestTemplate;
 import zust.xyt.ResponseResult;
 import zust.xyt.entity.User;
 import zust.xyt.entity.Video;
+import zust.xyt.entity.vo.subVideoVo;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * @author AndrewElvis
@@ -43,6 +44,45 @@ public class ChannelController {
             v.put("userNickName", u.getNickname());
             v.put("userAvatar", u.getAvatar());
         }
+        ArrayList subs = restTemplate.getForObject("http://SERVICE-USER/user/subscribe/" + id, ArrayList.class);
+
+        Iterator iterator = subs.iterator();
+        List<subVideoVo> subVideos = new ArrayList<>();
+        while (iterator.hasNext()){
+            LinkedHashMap next = (LinkedHashMap) iterator.next();
+            List<LinkedHashMap> subVideo = restTemplate.getForObject("http://SERVICE-VIDEO/video/getByUserId/" + next.get("id"), List.class);
+            User subscribe = restTemplate.getForObject("http://SERVICE-USER/user/" + next.get("id"), User.class);
+            for (LinkedHashMap subvideo : subVideo) {
+                subVideoVo subVideoVo = new subVideoVo();
+                subVideoVo.setTitle((String) subvideo.get("title"));
+                subVideoVo.setSourceId((String) subvideo.get("sourceId"));
+                subVideoVo.setCount((String) subvideo.get("count"));
+                subVideoVo.setCover((String) subvideo.get("cover"));
+                subVideoVo.setGmtCreate((String) subvideo.get("gmtCreate"));
+                subVideoVo.setUserAvatar(subscribe.getAvatar());
+                subVideoVo.setUserNickName(subscribe.getNickname());
+                subVideos.add(subVideoVo);
+            }
+        }
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yy-MM-dd");
+        if (subVideos != null){
+            subVideos.sort(Comparator.comparingLong(a -> {
+                try {
+                    return -((simpleDateFormat.parse(a.getGmtCreate())).getTime());
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                return 0;
+            }));
+        }
+        /*try {
+            simpleDateFormat.parse(user.getGmtCreate().toString());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }*/
+
+        model.addAttribute("subVideos",subVideos);
+
         model.addAttribute("subscribes",users);
         model.addAttribute("user",me);
         model.addAttribute("channelUser", user);
