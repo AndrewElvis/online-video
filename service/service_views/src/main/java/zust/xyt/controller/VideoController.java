@@ -60,7 +60,7 @@ public class VideoController {
         if (subVideos != null){
             subVideos.sort(Comparator.comparingLong(a -> {
                 try {
-                    return (simpleDateFormat.parse(a.getGmtCreate())).getTime();
+                    return ((simpleDateFormat.parse(a.getGmtCreate())).getTime());
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
@@ -114,7 +114,7 @@ public class VideoController {
         if (subVideos != null){
             subVideos.sort(Comparator.comparingLong(a -> {
                 try {
-                    return (simpleDateFormat.parse(a.getGmtCreate())).getTime();
+                    return -((simpleDateFormat.parse(a.getGmtCreate())).getTime());
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
@@ -160,7 +160,7 @@ public class VideoController {
         if (subVideos != null){
         subVideos.sort(Comparator.comparingLong(a -> {
             try {
-                return (simpleDateFormat.parse(a.getGmtCreate())).getTime();
+                return -((simpleDateFormat.parse(a.getGmtCreate())).getTime());
             } catch (ParseException e) {
                 e.printStackTrace();
             }
